@@ -23,7 +23,7 @@ public:
 
 	void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
 
-	 //void SaveComponent(int ID, fstream& fileToSave);
+	virtual void SaveComponent(int ID, fstream& fileToSave);
 
 
 };
