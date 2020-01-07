@@ -33,7 +33,7 @@ struct GraphicsInfo
 
 class UI
 {
-
+	Point LastClicked;
 	enum DsgnMenuItem //The items of the design menu (you should add more items)
 	{
 		//Note: Items are ordered here as they appear in menu
@@ -120,6 +120,7 @@ class UI
 public:
 	
 	UI();
+	Point getlast_point_clicked();
 	int getGateWidth() const;
 	int getGateHeight() const;	
 	// Input Functions  ---------------------------
