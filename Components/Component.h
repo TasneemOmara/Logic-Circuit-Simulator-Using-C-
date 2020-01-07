@@ -28,7 +28,7 @@ public:
 	//Destructor must be virtual
 	virtual ~Component();
 
-	//virtual void SaveComponent(int ID, fstream& fileToSave) = 0; //outputs the line defining the saved component 
+	virtual void SaveComponent(int ID, fstream& fileToSave) = 0; //outputs the line defining the saved component 
 	//virtual void LoadComponent(int ID, fstream &fileToLoad) = 0; // Inputs the component in the compList
 
 	//InputPin* getInput();
