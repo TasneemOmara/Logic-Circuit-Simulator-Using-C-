@@ -13,18 +13,18 @@
 class AND2 :public Gate
 {
 public:
-	AND2(GraphicsInfo* r_pGfxInfo, int r_FanOut);
-	 void Operate();	//Calculates the output of the AND gate
- void Draw(UI*);	//Draws 2-input gate
 
-	 int GetOutPinStatus();	//returns status of outputpin if LED, return -1
+	AND2(GraphicsInfo* r_pGfxInfo, int r_FanOut);
+	void Operate();	//Calculates the output of the AND gate
+	void Draw(UI*);	//Draws 2-input gate
+
+	int GetOutPinStatus();	//returns status of outputpin if LED, return -1
 	int GetInputPinStatus(int n);	//returns status of Inputpin # n if SWITCH, return -1
 
- void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
+	void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
 
-	 /*void SaveComponent(int ID, fstream& fileToSave);
+	 //void SaveComponent(int ID, fstream& fileToSave);
 
-	 GraphicsInfo* getGraphics();*/
 
 };
 

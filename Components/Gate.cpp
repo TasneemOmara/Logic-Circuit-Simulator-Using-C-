@@ -31,19 +31,6 @@ bool Gate::selected(Point k) {
 	}
 }
 
-/*string Gate::getLabel()
-{
-	return m_Label;
-}
-void Gate::setLabel(string L)
-{
-	m_Label = L;
-}
-*/
-void Gate::set_selected(bool val)
-{
-	is_selected = val;
-}
 
 //	InputPin* Gate::getInput()
 	//{

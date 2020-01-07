@@ -35,13 +35,10 @@ public:
 	//inhertied Save/Load functions 
 	virtual void SaveComponent(int ID, fstream& fileToSave) {};
 	*
-	virtual GraphicsInfo* getGraphics();
 
 
 	virtual InputPin* getInput();
 	virtual OutputPin* getOutput();*/
-
-	virtual void set_selected(bool val);
 
 };
 

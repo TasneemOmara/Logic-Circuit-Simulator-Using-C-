@@ -48,14 +48,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_AND_GATE_2:
 		pAct = new AddANDgate2(this);
 		break;
+	
 
 		/*case ADD_CONNECTION:
 			pAct = new ADD_connection(this);
 			break;
 
-		case SELECT:
-			pAct = new Select(this);
-			break;
+
 		case ADD_Buff:
 			pAct = new ADD_BUFF(this);
 			break;

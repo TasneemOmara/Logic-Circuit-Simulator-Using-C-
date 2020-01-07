@@ -12,6 +12,7 @@ protected:
 	bool is_selected;
 	GraphicsInfo *m_pGfxInfo;	//The parameters required to draw a component
 	string m_Label;
+
 public:
 	virtual bool selected(Point k) = 0;
 	Component(GraphicsInfo *r_GfxInfo);
@@ -26,17 +27,20 @@ public:
 
 	//Destructor must be virtual
 	virtual ~Component();
+
 	//virtual void SaveComponent(int ID, fstream& fileToSave) = 0; //outputs the line defining the saved component 
 	//virtual void LoadComponent(int ID, fstream &fileToLoad) = 0; // Inputs the component in the compList
 
 	//InputPin* getInput();
 	//OutputPin* getOutput();
 
-	//virtual GraphicsInfo* getGraphics() = 0;
+	GraphicsInfo* getGraphics();
 
-	//virtual string getLabel();
-	//virtual void setLabel(string L);
-virtual void set_selected(bool val) = 0;
+	string getLabel();
+	void setLabel(string L);
+
+
+	void set_selected(bool val);
 
 };
 
