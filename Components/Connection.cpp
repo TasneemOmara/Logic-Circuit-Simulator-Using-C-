@@ -45,3 +45,8 @@ void Connection::setInputPinStatus(int n, STATUS s)
 {
 	SrcPin->setStatus(s);
 }
+
+void Connection::SaveComponent(int ID, fstream& fileToSave)
+{
+
+}

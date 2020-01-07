@@ -1,5 +1,7 @@
 #include "ApplicationManager.h"
 #include "Actions\AddANDgate2.h"
+#include "Actions\Save.h"
+
 /*#include "Actions\ADD_connection.h"
 #include "Actions\ADD_BUFF.h"
 #include "Actions\ADD_INV2.h"
@@ -12,7 +14,6 @@
 #include "Actions\AddXNORgate.h"
 #include "Actions\AddXORgate.h"
 #include "Actions\Select.h"
-#include "Actions\Save.h"
 #include "Actions\Load.h"
 */
 ApplicationManager::ApplicationManager()
@@ -82,10 +83,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_LED:
 			pAct = new ADD_LED2(this);
 			break;
-
+			*/
 		case SAVE:
 			pAct = new Save(this);
 			break;
+			/*
 		case LOAD:
 			pAct = new Load(this);
 			break;
@@ -120,6 +122,19 @@ UI* ApplicationManager::GetUI()
 void ApplicationManager::GetCompList(int& Count, Component * *Complist) {
 	Complist = CompList;
 	Count = CompCount;
+}
+
+////////////////////////////////////////////////////////////////////
+
+int ApplicationManager::getCompCount() const
+{
+	return CompCount;
+}
+
+////////////////////////////////////////////////////////////////////
+Component** ApplicationManager::GetComponentList()
+{
+	return CompList;
 }
 
 ////////////////////////////////////////////////////////////////////
