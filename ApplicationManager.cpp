@@ -1,5 +1,6 @@
 #include "ApplicationManager.h"
 #include "Actions\AddANDgate2.h"
+#include "Actions\Select.h"
 /*#include "Actions\ADD_connection.h"
 #include "Actions\ADD_BUFF.h"
 #include "Actions\ADD_INV2.h"
@@ -11,7 +12,6 @@
 #include "Actions\AddORgate.h"
 #include "Actions\AddXNORgate.h"
 #include "Actions\AddXORgate.h"
-#include "Actions\Select.h"
 #include "Actions\Save.h"
 #include "Actions\Load.h"
 */
@@ -48,7 +48,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_AND_GATE_2:
 		pAct = new AddANDgate2(this);
 		break;
-	
+	case SELECT:
+		pAct = new Select(this);
+		break;
 
 		/*case ADD_CONNECTION:
 			pAct = new ADD_connection(this);
@@ -88,12 +90,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case LOAD:
 			pAct = new Load(this);
-			break;
+			break;*/
 		case EXIT:
 			///TODO: create ExitAction here
 			break;
 
-			*/
+			
 	}
 	if (pAct)
 	{
