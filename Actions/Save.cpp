@@ -29,7 +29,7 @@ void Save::Execute()
 	{
 		pUI->PrintMsg("Unable to open the file");
 	}
-	
+
 	fileToSave.close();
 }
 

@@ -31,6 +31,10 @@ bool Gate::selected(Point k) {
 	}
 }
 
+void Gate::SaveComponent(int ID, fstream& fileToSave)
+{
+
+}
 
 //	InputPin* Gate::getInput()
 	//{
