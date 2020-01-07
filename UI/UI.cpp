@@ -77,7 +77,9 @@ string UI::GetSrting()
 	}
 
 }
-
+Point UI::getlast_point_clicked() {
+	return LastClicked;
+}
 //This function reads the position where the user clicks to determine the desired action
 ActionType UI::GetUserAction() const
 {	
