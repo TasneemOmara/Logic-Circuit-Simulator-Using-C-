@@ -13,7 +13,7 @@ void Save::Execute()
 {
 	fstream fileToSave("SavedCircuit.txt", ios::out);
 	UI* pUI = pManager->GetUI();
-
+	pUI->PrintMsg("Saving new file, it's name is SavedCircuit.txt");
 	int CompCount = pManager->getCompCount();
 	Component** CompList = pManager->GetComponentList();
 
@@ -29,7 +29,7 @@ void Save::Execute()
 	{
 		pUI->PrintMsg("Unable to open the file");
 	}
-
+	
 	fileToSave.close();
 }
 

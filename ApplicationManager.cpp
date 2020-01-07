@@ -1,6 +1,7 @@
 #include "ApplicationManager.h"
 #include "Actions\AddANDgate2.h"
 #include "Actions\Save.h"
+#include "Actions\Load.h"
 
 /*#include "Actions\ADD_connection.h"
 #include "Actions\ADD_BUFF.h"
@@ -14,7 +15,7 @@
 #include "Actions\AddXNORgate.h"
 #include "Actions\AddXORgate.h"
 #include "Actions\Select.h"
-#include "Actions\Load.h"
+
 */
 ApplicationManager::ApplicationManager()
 {
@@ -43,6 +44,7 @@ ActionType ApplicationManager::GetUserAction()
 
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
+	pUI->ClearStatusBar();
 	Action* pAct = NULL;
 	switch (ActType)
 	{
@@ -87,15 +89,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SAVE:
 			pAct = new Save(this);
 			break;
-			/*
 		case LOAD:
 			pAct = new Load(this);
 			break;
+			
 		case EXIT:
 			///TODO: create ExitAction here
 			break;
 
-			*/
 	}
 	if (pAct)
 	{
