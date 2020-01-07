@@ -33,12 +33,11 @@ public:
 	virtual void setLabel(string L);
 
 	//inhertied Save/Load functions 
-	*/
-	virtual void SaveComponent(int ID, fstream& fileToSave);
-	
+	virtual void SaveComponent(int ID, fstream& fileToSave) {};
+	*
 
 
-	/*virtual InputPin* getInput();
+	virtual InputPin* getInput();
 	virtual OutputPin* getOutput();*/
 
 };
