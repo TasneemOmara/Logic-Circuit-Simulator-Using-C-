@@ -12,11 +12,10 @@ Select::Select(ApplicationManager* pApp) : Action(pApp)
 void Select::Execute() {
 
 	bool is_selected;
-	int CompCount;
-	Component* CompList[200];
+	int CompCount = pManager->getCompCount();
+	Component** CompList = pManager->GetComponentList();
 
 	UI* pUI = pManager->GetUI();
-	pManager->GetCompList(CompCount, CompList);
 
 	for (int i = 0; i < CompCount; i++)
 	{

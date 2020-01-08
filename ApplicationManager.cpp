@@ -86,6 +86,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_XOR_GATE_2:
 		pAct = new AddXOR2(this);
 		break;
+	case SELECT:
+		pAct = new Select(this);
+		break;
 
 		/*case ADD_CONNECTION:
 			pAct = new ADD_connection(this);
