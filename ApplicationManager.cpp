@@ -108,7 +108,28 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 void ApplicationManager::UpdateInterface()
 {
 	for (int i = 0; i < CompCount; i++)
+	{
 		CompList[i]->Draw(pUI);
+		if (CompList[i]->getLabel() != "Default")
+		{
+			GraphicsInfo* pGraphics = CompList[i]->getGraphics();
+			int Cx1, Cy1, Cx2, Cy2;
+			Cx1 = pGraphics->PointsList[0].x;
+			Cy1 = pGraphics->PointsList[0].y;
+			Cx2 = pGraphics->PointsList[1].x;
+			Cy2 = pGraphics->PointsList[1].y;
+
+			int width = pUI->getGateWidth();
+			int height = pUI->getGateHeight();
+
+			int label_x = Cx1 + (width);
+			int label_y = Cy1 + (height);
+
+			//Print the string into the desired location
+			pUI->PrintMsg2(CompList[i]->getLabel(), label_x, label_y);
+		}
+	}
+
 }
 
 ////////////////////////////////////////////////////////////////////

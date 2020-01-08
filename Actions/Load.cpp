@@ -58,7 +58,7 @@ void Load::Execute()
 			CompInfo[j++] = input;
 
 			string compType = CompInfo[0];
-			string Label = CompInfo[1];
+			string Label = CompInfo[2];
 			int x1 = stoi(CompInfo[3]);
 			int y1 = stoi(CompInfo[4]);
 			int x2 = stoi(CompInfo[5]);
@@ -112,6 +112,8 @@ void Load::Execute()
 			{
 				pC = new XOR2(pGInfo, XOR2_FANOUT);
 			}
+
+			pC->setLabel(Label);
 
 			pManager->AddComponent(pC);
 		}
