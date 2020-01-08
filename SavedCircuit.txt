@@ -1,6 +1,3 @@
-5
-AND2   0   Default   158   177   208   227
-INV2   1   Default   380   141   430   191
-LED   2   Default   482   253   532   303
-BUFF   3   Default   356   287   406   337
-NAND2   4   Default   146   351   196   401
+2
+NAND2   0   Default   215   199   265   249
+NOR2   1   Default   381   193   431   243
