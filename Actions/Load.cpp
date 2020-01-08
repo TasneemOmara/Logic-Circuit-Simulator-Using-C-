@@ -7,6 +7,7 @@
 #include "../Components/NAND2.h"
 #include "../Components/NOR2.h"
 #include "../Components/OR2.h"
+#include "../Components/Switch.h"
 
 Load::Load(ApplicationManager* pApp) : Action(pApp) {
 }
@@ -97,12 +98,13 @@ void Load::Execute()
 			{
 				pC = new OR2(pGInfo, OR2_FANOUT);
 			}
-			/*
-
 			else if (compType == "Switch")
 			{
 				pC = new Switch(pGInfo, Switch_FANOUT);
 			}
+			/*
+
+
 
 
 

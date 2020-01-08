@@ -9,13 +9,13 @@
 #include "Actions\AddNAND2.h"
 #include "Actions\AddNOR2.h"
 #include "Actions\AddOR2.h"
-
+#include "Actions\AddSwitch.h"
 /*#include "Actions\ADD_connection.h"
 
 
 #include "Actions\ADD_Label.h"
 
-#include "Actions\ADD_switch.h"
+
 
 
 
@@ -74,7 +74,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_OR_GATE_2:
 		pAct = new AddOR2(this);
 		break;
-
+	case ADD_Switch:
+		pAct = new AddSwitch(this);
+		break;
 
 		/*case ADD_CONNECTION:
 			pAct = new ADD_connection(this);
@@ -91,9 +93,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_XNOR_GATE_2:
 			pAct = new AddXNORgate(this);
 			break;
-		case ADD_Switch:
-			pAct = new ADD_switch(this);
-			break;
+
 
 			*/
 		case SAVE:
