@@ -14,6 +14,8 @@
 #include "Actions\AddXOR2.h"
 #include "Actions\AddConnection.h"
 #include "Actions\AddLabel.h"
+#include "Actions\EditLabel.h"
+#include "Actions/ExitProgram.h"
 
 ApplicationManager::ApplicationManager()
 {
@@ -73,7 +75,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_XNOR_GATE_2:
 		pAct = new AddXNOR2(this);
 		break;
-
 	case ADD_XOR_GATE_2:
 		pAct = new AddXOR2(this);
 		break;
@@ -92,8 +93,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case LOAD:
 		pAct = new Load(this);
 		break;
+	case EDIT_Label:
+		pAct = new EditLabel(this);
+		break;
 	case EXIT:
-		///TODO: create ExitAction here
+		pAct = new ExitProgram(this);
 		break;
 	}
 	if (pAct)
