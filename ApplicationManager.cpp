@@ -5,12 +5,13 @@
 #include "Actions\Load.h"
 #include "Actions\AddBUFF.h"
 #include "Actions\AddINV2.h"
+#include "Actions\AddLED.h"
 
 /*#include "Actions\ADD_connection.h"
 
 
 #include "Actions\ADD_Label.h"
-#include "Actions\ADD_LED2.h"
+
 #include "Actions\ADD_switch.h"
 #include "Actions\AddNANDgate.h"
 #include "Actions\AddNORgate.h"
@@ -58,6 +59,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_INV:
 		pAct = new AddINV2(this);
 		break;
+	case ADD_LED:
+		pAct = new AddLED(this);
+		break;
 
 
 		/*case ADD_CONNECTION:
@@ -84,9 +88,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case ADD_Switch:
 			pAct = new ADD_switch(this);
 			break;
-		case ADD_LED:
-			pAct = new ADD_LED2(this);
-			break;
+
 			*/
 		case SAVE:
 			pAct = new Save(this);

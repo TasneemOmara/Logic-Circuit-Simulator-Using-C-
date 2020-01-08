@@ -14,7 +14,7 @@ protected:
 	string m_Label;
 
 public:
-	virtual bool selected(Point k) = 0;
+	bool selected(Point k);
 	Component(GraphicsInfo *r_GfxInfo);
 
 	virtual void Operate() = 0;	//Calculates the output according to the inputs

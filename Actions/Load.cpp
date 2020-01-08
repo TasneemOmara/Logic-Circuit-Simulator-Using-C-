@@ -3,6 +3,7 @@
 #include "../Components/AND2.h"
 #include "../Components/BUFF.h"
 #include "../Components/INV2.h"
+#include "../Components/LED.h"
 
 Load::Load(ApplicationManager* pApp) : Action(pApp) {
 }
@@ -77,11 +78,12 @@ void Load::Execute()
 				pC = new INV2(pGInfo, INV2_FANOUT);
 				
 			}
-			/*
 			else if (compType == "LED")
 			{
-				pC = new Led(pGInfo, LED_FANOUT);
+				pC = new LED(pGInfo);
 			}
+			/*
+
 			else if (compType == "Switch")
 			{
 				pC = new Switch(pGInfo, Switch_FANOUT);

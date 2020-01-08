@@ -15,21 +15,6 @@ Gate::Gate(GraphicsInfo* pGfxInfo, int r_Inputs, int r_FanOut) :Component(pGfxIn
 		m_InputPins[i].setComponent(this);
 }
 
-bool Gate::selected(Point k) {
-	int x_min = m_pGfxInfo->PointsList[0].x;
-	int x_max = m_pGfxInfo->PointsList[1].x;
-	int y_min = m_pGfxInfo->PointsList[0].y;
-	int y_max = m_pGfxInfo->PointsList[1].y;
-	if (k.x > x_min && k.x < x_max && k.y>y_min && k.y < y_max) {
-		is_selected = true;
-		return true;
-	}
-	else
-	{
-		is_selected = false;
-		return false;
-	}
-}
 
 void Gate::SaveComponent(int ID, fstream& fileToSave)
 {

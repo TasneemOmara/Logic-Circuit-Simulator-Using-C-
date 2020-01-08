@@ -27,7 +27,6 @@ protected:
 	int m_Inputs;		//No. of input pins of that Gate.
 public:
 	Gate(GraphicsInfo* pGfxInfo, int r_Inputs, int r_FanOut);
-	bool selected(Point k);
 
 	//inhertied Save/Load functions 
 	virtual void SaveComponent(int ID, fstream& fileToSave);
