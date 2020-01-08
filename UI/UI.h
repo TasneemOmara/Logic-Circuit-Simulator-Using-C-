@@ -121,6 +121,7 @@ public:
 	
 	UI();
 	Point getlast_point_clicked();
+	void setlast_point_clicked(Point p);    //used in add label
 	int getGateWidth() const;
 	int getGateHeight() const;	
 	// Input Functions  ---------------------------

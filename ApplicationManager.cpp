@@ -13,18 +13,8 @@
 #include "Actions\AddXNOR2.h"
 #include "Actions\AddXOR2.h"
 #include "Actions\AddConnection.h"
-/*
+#include "Actions\AddLabel.h"
 
-
-#include "Actions\ADD_Label.h"
-
-
-
-
-
-
-
-*/
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
@@ -93,21 +83,18 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_CONNECTION:
 		pAct = new AddConnection(this);
 		break;
-
-		/*
-
-
-			*/
-		case SAVE:
-			pAct = new Save(this);
-			break;
-		case LOAD:
-			pAct = new Load(this);
-			break;
-
-		case EXIT:
-			///TODO: create ExitAction here
-			break;
+	case ADD_Label:
+		pAct = new AddLabel(this);
+		break;
+	case SAVE:
+		pAct = new Save(this);
+		break;
+	case LOAD:
+		pAct = new Load(this);
+		break;
+	case EXIT:
+		///TODO: create ExitAction here
+		break;
 	}
 	if (pAct)
 	{
