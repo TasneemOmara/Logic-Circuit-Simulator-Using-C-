@@ -6,6 +6,7 @@
 #include "../Components/LED.h"
 #include "../Components/NAND2.h"
 #include "../Components/NOR2.h"
+#include "../Components/OR2.h"
 
 Load::Load(ApplicationManager* pApp) : Action(pApp) {
 }
@@ -92,6 +93,10 @@ void Load::Execute()
 			{
 				pC = new NOR2(pGInfo, NOR2_FANOUT);
 			}
+			else if (compType == "OR2")
+			{
+				pC = new OR2(pGInfo, OR2_FANOUT);
+			}
 			/*
 
 			else if (compType == "Switch")
@@ -100,10 +105,7 @@ void Load::Execute()
 			}
 
 
-			else if (compType == "OR2")
-			{
-				pC = new OR2(pGInfo, OR_FANOUT);
-			}
+
 			else if (compType == "XNOR2")
 			{
 				pC = new XNOR2(pGInfo, XNOR2_FANOUT);

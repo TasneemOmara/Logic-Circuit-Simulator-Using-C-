@@ -8,6 +8,7 @@
 #include "Actions\AddLED.h"
 #include "Actions\AddNAND2.h"
 #include "Actions\AddNOR2.h"
+#include "Actions\AddOR2.h"
 
 /*#include "Actions\ADD_connection.h"
 
@@ -17,7 +18,7 @@
 #include "Actions\ADD_switch.h"
 
 
-#include "Actions\AddORgate.h"
+
 #include "Actions\AddXNORgate.h"
 #include "Actions\AddXORgate.h"
 */
@@ -70,6 +71,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_NOR_GATE_2:
 		pAct = new AddNOR2(this);
 		break;
+	case ADD_OR_GATE_2:
+		pAct = new AddOR2(this);
+		break;
 
 
 		/*case ADD_CONNECTION:
@@ -78,9 +82,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 
 
-		case ADD_OR_GATE_2:
-			pAct = new AddORgate(this);
-			break;
+
 
 
 		case ADD_XOR_GATE_2:
