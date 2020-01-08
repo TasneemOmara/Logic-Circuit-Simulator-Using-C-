@@ -9,6 +9,7 @@
 #include "../Components/OR2.h"
 #include "../Components/Switch.h"
 #include "../Components/XNOR2.h"
+#include "../Components/XOR2.h"
 
 Load::Load(ApplicationManager* pApp) : Action(pApp) {
 }
@@ -107,18 +108,10 @@ void Load::Execute()
 			{
 				pC = new XNOR2(pGInfo, XNOR2_FANOUT);
 			}
-			/*
-
-
-
-
-
-
 			else if (compType == "XOR2")
 			{
-				pC = new XNOR2(pGInfo, XNOR_FANOUT);
-			}*/
-				
+				pC = new XOR2(pGInfo, XOR2_FANOUT);
+			}
 
 			pManager->AddComponent(pC);
 		}

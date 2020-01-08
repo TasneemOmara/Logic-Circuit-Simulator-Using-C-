@@ -11,6 +11,7 @@
 #include "Actions\AddOR2.h"
 #include "Actions\AddSwitch.h"
 #include "Actions\AddXNOR2.h"
+#include "Actions\AddXOR2.h"
 /*#include "Actions\ADD_connection.h"
 
 
@@ -21,7 +22,7 @@
 
 
 
-#include "Actions\AddXORgate.h"
+
 */
 ApplicationManager::ApplicationManager()
 {
@@ -82,19 +83,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddXNOR2(this);
 		break;
 
+	case ADD_XOR_GATE_2:
+		pAct = new AddXOR2(this);
+		break;
+
 		/*case ADD_CONNECTION:
 			pAct = new ADD_connection(this);
 			break;
-
-
-
-
-
-
-		case ADD_XOR_GATE_2:
-			pAct = new AddXORgate(this);
-			break;
-
 
 
 			*/
