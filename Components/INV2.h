@@ -1,21 +1,20 @@
-#pragma once
+#pragma once 
 
+/*
+  Class INV2
+  -----------
+  represent the 2-input INV2 gate
+*/
 
-#include "InputPin.h"
-#include "OutputPin.h"
-#include "Component.h"
 #include "Gate.h"
+#include "../Defs.H"
 
-class BUFF :public Gate
+class INV2 :public Gate
 {
-protected:
-	InputPin m_InputputPin;	//BUFF has only 1 inputputPin
-	OutputPin m_OutputPin;	//BUFF has only 1 OutputPin
 public:
-	//BUFF(GraphicsInfo* pGfxInfo);
-	BUFF(GraphicsInfo* pGfxInfo, int r_FanOut);
 
-	void Operate();	//Calculates the output of the AND gate
+	INV2(GraphicsInfo* r_pGfxInfo, int r_FanOut);
+	void Operate();	//Calculates the output of the INV2 gate
 	void Draw(UI*);	//Draws 2-input gate
 
 	int GetOutPinStatus();	//returns status of outputpin if LED, return -1
@@ -24,7 +23,6 @@ public:
 	void setInputPinStatus(int n, STATUS s);	//set status of Inputpin # n, to be used by connection class.
 
 	virtual void SaveComponent(int ID, fstream& fileToSave);
-
 
 
 };

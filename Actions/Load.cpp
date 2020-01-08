@@ -1,6 +1,8 @@
 #include "Load.h"
 #include "..\ApplicationManager.h"
 #include "../Components/AND2.h"
+#include "../Components/BUFF.h"
+#include "../Components/INV2.h"
 
 Load::Load(ApplicationManager* pApp) : Action(pApp) {
 }
@@ -66,14 +68,16 @@ void Load::Execute()
 			{
 				pC = new AND2(pGInfo, AND2_FANOUT);
 			}
-			/*else if (compType == "BUFF")
+			else if (compType == "BUFF")
 			{
 				pC = new BUFF(pGInfo, BUFF_FANOUT);
 			}
 			else if (compType == "INV2")
 			{
 				pC = new INV2(pGInfo, INV2_FANOUT);
+				
 			}
+			/*
 			else if (compType == "LED")
 			{
 				pC = new Led(pGInfo, LED_FANOUT);

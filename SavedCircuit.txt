@@ -1,3 +1,4 @@
-2
-AND2   0   Default   272   228   322   278
-AND2   1   Default   662   228   712   278
+3
+INV2   0   Default   343   151   393   201
+AND2   1   Default   241   275   291   325
+BUFF   2   Default   571   251   621   301

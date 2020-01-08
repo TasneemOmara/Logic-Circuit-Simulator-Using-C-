@@ -3,10 +3,12 @@
 #include "Actions\Select.h"
 #include "Actions\Save.h"
 #include "Actions\Load.h"
+#include "Actions\AddBUFF.h"
+#include "Actions\AddINV2.h"
 
 /*#include "Actions\ADD_connection.h"
-#include "Actions\ADD_BUFF.h"
-#include "Actions\ADD_INV2.h"
+
+
 #include "Actions\ADD_Label.h"
 #include "Actions\ADD_LED2.h"
 #include "Actions\ADD_switch.h"
@@ -50,6 +52,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_AND_GATE_2:
 		pAct = new AddANDgate2(this);
 		break;
+	case ADD_Buff:
+		pAct = new AddBUFF(this);
+		break;
+	case ADD_INV:
+		pAct = new AddINV2(this);
+		break;
 
 
 		/*case ADD_CONNECTION:
@@ -57,12 +65,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 
-		case ADD_Buff:
-			pAct = new ADD_BUFF(this);
-			break;
-		case ADD_INV:
-			pAct = new ADD_INV2(this);
-			break;
+
 		case ADD_OR_GATE_2:
 			pAct = new AddORgate(this);
 			break;
