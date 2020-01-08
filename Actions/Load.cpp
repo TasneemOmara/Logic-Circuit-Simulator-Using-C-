@@ -8,6 +8,7 @@
 #include "../Components/NOR2.h"
 #include "../Components/OR2.h"
 #include "../Components/Switch.h"
+#include "../Components/XNOR2.h"
 
 Load::Load(ApplicationManager* pApp) : Action(pApp) {
 }
@@ -102,16 +103,17 @@ void Load::Execute()
 			{
 				pC = new Switch(pGInfo, Switch_FANOUT);
 			}
+			else if (compType == "XNOR2")
+			{
+				pC = new XNOR2(pGInfo, XNOR2_FANOUT);
+			}
 			/*
 
 
 
 
 
-			else if (compType == "XNOR2")
-			{
-				pC = new XNOR2(pGInfo, XNOR2_FANOUT);
-			}
+
 			else if (compType == "XOR2")
 			{
 				pC = new XNOR2(pGInfo, XNOR_FANOUT);
