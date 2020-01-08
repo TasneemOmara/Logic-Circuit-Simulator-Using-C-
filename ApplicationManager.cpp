@@ -12,7 +12,8 @@
 #include "Actions\AddSwitch.h"
 #include "Actions\AddXNOR2.h"
 #include "Actions\AddXOR2.h"
-/*#include "Actions\ADD_connection.h"
+#include "Actions\AddConnection.h"
+/*
 
 
 #include "Actions\ADD_Label.h"
@@ -89,10 +90,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SELECT:
 		pAct = new Select(this);
 		break;
+	case ADD_CONNECTION:
+		pAct = new AddConnection(this);
+		break;
 
-		/*case ADD_CONNECTION:
-			pAct = new ADD_connection(this);
-			break;
+		/*
 
 
 			*/

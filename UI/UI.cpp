@@ -413,7 +413,7 @@ void UI::DrawINV(const GraphicsInfo& r_GfxInfo, bool selected) const
 }
 
 
-void UI::DrawConnection(const GraphicsInfo& r_GfxInfo, bool selected) const
+void UI::DrawConnection(Point p1, Point p2, bool selected) const
 {
 	//TODO: Add code to draw connection
 
@@ -426,7 +426,7 @@ void UI::DrawConnection(const GraphicsInfo& r_GfxInfo, bool selected) const
 	else
 		pWind->SetPen(RED, 3);
 
-	pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y);
+	pWind->DrawLine(p1.x, p1.y, p2.x, p2.y);
 	//**************************end edit
 }
 
