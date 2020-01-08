@@ -40,7 +40,6 @@ public:
 	//Gets a pointer to UI Object
 	UI* GetUI();
 
-	void GetCompList(int& Count, Component** Complist);
 
 
 	//Adds a new component to the list of components
