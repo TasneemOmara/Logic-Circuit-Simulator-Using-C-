@@ -103,10 +103,10 @@ void AddConnection::Execute() {
               //create graphics info
               GraphicsInfo* pGInfo = new GraphicsInfo(2);
 
-              pGInfo->PointsList[0].x = C1_pts[0].x;
-              pGInfo->PointsList[0].y = C1_pts[0].y;
-              pGInfo->PointsList[1].x = C2_pts[1].x;
-              pGInfo->PointsList[1].y = C2_pts[1].y;
+              pGInfo->PointsList[0].x = C1_pts[1].x;
+              pGInfo->PointsList[0].y = C1_pts[1].y;
+              pGInfo->PointsList[1].x = C2_pts[0].x;
+              pGInfo->PointsList[1].y = C2_pts[0].y;
 
 
               //create the connection with the first point corresponding to the first component and the second point corresponding to the 
