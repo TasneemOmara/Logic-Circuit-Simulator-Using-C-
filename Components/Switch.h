@@ -26,8 +26,8 @@ public:
 	void setInputPinStatus(int n, STATUS s);//set status of Inputpin # n, to be used by connection class.
 
 
-	void setSwitchState(Switch_State state);
-	Switch_State getSwitchState();
+	virtual void setSwitchState(Switch_State state);
+	virtual Switch_State getSwitchState();
 	virtual void SaveComponent(fstream& fileToSave); //save function
 	
 

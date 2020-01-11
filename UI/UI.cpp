@@ -162,7 +162,16 @@ ActionType UI::GetUserAction()
 			case 0: return SIMULATE;
 			case 1: return DSN_MODE;
 			}
+
 		}
+		//[2] User clicks on the drawing area
+		if (y >= 80 && y < height - StatusBarHeight)
+		{
+			return Change_Switch;	//user want to select/unselect a statement in the flowchart
+		}
+
+		//[3] User clicks on the status bar
+		return STATUS_BAR;
 	}
 
 }
@@ -411,26 +420,48 @@ void UI::DrawNAND2(const GraphicsInfo& r_GfxInfo, bool selected) const
 	pWind->DrawImage(GateImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, GATE_Width, GATE_Height);
 }
 
-void UI::DrawSwitch(const GraphicsInfo& r_GfxInfo, bool selected) const
+void UI::DrawSwitch(const GraphicsInfo& r_GfxInfo, bool selected, Switch_State State ) const
 {
 	string GateImage;
-	if (selected)	//use image in the highlighted case
-		GateImage = "Images\\Gates\\Switch_Hi.jpg";
-	else
-		GateImage = "Images\\Gates\\Switch.jpg";
-
+	if (State == NotValid)
+	{
+		if (selected)	//use image in the highlighted case
+			GateImage = "Images\\Gates\\Switch_Hi.jpg";
+		else
+			GateImage = "Images\\Gates\\Switch.jpg";
+	}
+	if (State == ON)
+	{
+		    GateImage = "Images\\Gates\\Switch_ON.jpg";
+	}
+	else if (State == OFF)
+	{
+		    GateImage = "Images\\Gates\\Switch_OFF.jpg";
+	}
 	//Draw Switch at Gfx_Info (1st corner)
 	//Set the Image Width & Height by Switch Image Parameter in UI_Info
 	pWind->DrawImage(GateImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, GATE_Width, GATE_Height);
 }
 
-void UI::DrawLED(const GraphicsInfo& r_GfxInfo, bool selected) const
+void UI::DrawLED(const GraphicsInfo& r_GfxInfo, bool selected, STATUS state) const
 {
 	string GateImage;
-	if (selected)	//use image in the highlighted case
-		GateImage = "Images\\Gates\\LED_Hi.jpg";
+	if (state == NCON)
+	{
+		if (selected)	//use image in the highlighted case
+			GateImage = "Images\\Gates\\LED_Hi.jpg";
+		else
+			GateImage = "Images\\Gates\\LED.jpg";
+	}
+	else if (state == HIGH)
+	{
+		    GateImage = "Images\\Gates\\LED_ON.jpg";
+	}
 	else
-		GateImage = "Images\\Gates\\LED.jpg";
+	{
+		    GateImage = "Images\\Gates\\LED_OFF.jpg";
+	}
+
 
 	//Draw LED Gate at Gfx_Info (1st corner)
 	//Set the Image Width & Height by LED Image Parameter in UI_Info

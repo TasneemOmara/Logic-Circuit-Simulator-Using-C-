@@ -1,4 +1,5 @@
 #include "Switch.h"
+#include "../UI/UI.h"
 
 
 //r_FanOut: Fan out of the Switch's output pin
@@ -12,12 +13,26 @@ Switch::Switch(GraphicsInfo* pGfxInfo, int r_FanOut) :Gate(pGfxInfo, 0 , r_FanOu
 void Switch::Draw(UI* pUI)
 {
 	//Call output class and pass gate drawing info to it.
-	pUI->DrawSwitch(*m_pGfxInfo, is_selected);
+	if (pUI->AppMode == SIMULATION)
+	{ 
+		pUI->DrawSwitch(*m_pGfxInfo, is_selected, State);
+	}
+	else
+	{
+		pUI->DrawSwitch(*m_pGfxInfo, is_selected);
+	}
 }
 
 void Switch::Operate() {
 	//Calculates the output according to the inputs
-
+	if (State == ON)
+	{
+		m_OutputPin.setStatus(HIGH);
+	}
+	else
+	{
+		m_OutputPin.setStatus(LOW);
+	}
 }	
 
 

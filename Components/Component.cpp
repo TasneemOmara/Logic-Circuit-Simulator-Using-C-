@@ -7,8 +7,8 @@ Component::Component(GraphicsInfo* r_GfxInfo, int ID_val, string type , bool isC
 	m_Label = "Default";
 	is_selected = false;
 	is_full_connect = true;
-//	is_switch = false;
-//	State = NotValid;
+	is_switch = false;
+	State = NotValid;
 	ID = ID_val;
 	isConnection = isConnection_val;
 	CompType = type;
@@ -125,4 +125,13 @@ void Component::setSrcCmpnt(Component* SrcCmpnt_val)
 void Component::setPinNumber(int n)
 {
 
+}
+
+void Component::setSwitchState(Switch_State state)
+{
+
+}
+Switch_State Component:: getSwitchState()
+{
+	return NotValid;
 }

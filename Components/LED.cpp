@@ -4,17 +4,25 @@
 //r_FanOut: Fan out of the Switch's output pin
 LED::LED(GraphicsInfo* pGfxInfo) :Gate(pGfxInfo, 1, 0, "LED")
 {
-	InputPin* m_InputputPin = new InputPin;
-	m_InputputPin->setComponent(this);
+	m_InputPins = new InputPin;
+	m_InputPins->setComponent(this);
 }
 
 void  LED::Operate() {
-
-}	//Calculates the output according to the inputs
+	//Calculates the output according to the inputs
+}	
 
 
 void LED::Draw(UI* pUI) {
-	pUI->DrawLED(*m_pGfxInfo, is_selected);
+	if (pUI->AppMode == SIMULATION)
+	{
+		pUI->DrawLED(*m_pGfxInfo, is_selected, m_InputPins->getStatus());
+	}
+	else if (pUI->AppMode == DESIGN)
+	{
+		pUI->DrawLED(*m_pGfxInfo, is_selected);
+
+	}
 }
 
 //returns status of outputpin

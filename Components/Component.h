@@ -56,6 +56,7 @@ public:
 	bool get_connect_state();
 	bool get_switch();
 
+
 	int getID();
 
 	virtual Component* getSrcCmpnt(); //used for connection only
@@ -70,6 +71,10 @@ public:
 	virtual int get_max_Inputs() = 0;
 
 	bool is_Connection();
+
+	virtual void setSwitchState(Switch_State state);
+	virtual Switch_State getSwitchState();
+	
 };
 
 #endif

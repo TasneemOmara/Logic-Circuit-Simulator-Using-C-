@@ -1,5 +1,5 @@
-#ifndef __UI_H_
-#define __UI_H_
+#pragma once
+
 
 #include "..\CMUgraphicsLib\CMUgraphics.h"
 #include "..\Defs.h"
@@ -93,7 +93,6 @@ class UI
 
 
 
-	MODE AppMode;		//Application Mode (design or simulation)
 	
 	static const int	width = 1330, height = 650,	//Window width and height
 						wx = 15, wy = 15,			//Window starting coordinates
@@ -118,7 +117,8 @@ class UI
 	window *pWind;
 	
 public:
-	
+
+	MODE AppMode;		//Application Mode (design or simulation)
 	UI();
 	Point getlast_point_clicked();
 	void setlast_point_clicked(Point p);    //used in add label
@@ -156,8 +156,8 @@ public:
 	void DrawNOR2(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
 	void DrawXOR2(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
 	void DrawXNOR2(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
-	void DrawSwitch(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
-	void DrawLED(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+	void DrawSwitch(const GraphicsInfo& r_GfxInfo, bool selected = false, Switch_State State = NotValid) const;
+	void DrawLED(const GraphicsInfo& r_GfxInfo, bool selected = false, STATUS state = NCON) const;
 	void DrawBuffer(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
 	void DrawINV(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
 	//--------------- Edit ended here
@@ -179,4 +179,3 @@ public:
 	~UI();
 };
 
-#endif

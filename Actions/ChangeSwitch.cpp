@@ -19,10 +19,14 @@ void ChangeSwitch::Execute()
 		is_switch = CompList[i]->get_switch();
 		if (is_switch)
 		{
-			s = 
-			if ()
+			s = CompList[i]->getSwitchState();
+			if (s == ON )
 			{
-
+				CompList[i]->setSwitchState(OFF);
+			}
+			if (s == OFF)
+			{
+				CompList[i]->setSwitchState(ON);
 			}
 		}
 	}
