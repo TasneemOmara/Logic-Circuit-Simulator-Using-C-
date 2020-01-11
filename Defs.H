@@ -61,6 +61,14 @@ enum STATUS
 	NCON	//not connected
 };
 
+enum Switch_State
+{
+	ON,
+	OFF,
+	NotValid
+
+};
+
 enum  MODE	//Modes of operation
 {
 	DESIGN,

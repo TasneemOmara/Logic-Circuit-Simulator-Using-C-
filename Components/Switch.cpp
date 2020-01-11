@@ -5,6 +5,7 @@
 Switch::Switch(GraphicsInfo* pGfxInfo, int r_FanOut) :Component(pGfxInfo), m_OutputPin(r_FanOut)
 {
 	is_switch = true;
+	State = OFF;
 }
 
 
@@ -44,6 +45,15 @@ void Switch::SaveComponent(int ID, fstream& fileToSave)
 		<< m_pGfxInfo->PointsList[0].y << "   " << m_pGfxInfo->PointsList[1].x << "   " << m_pGfxInfo->PointsList[1].y << endl;
 }
 
+
+void Switch::setSwitchState(Switch_State state)
+{
+	State = state;
+}
+Switch_State Switch::getSwitchState()
+{
+	return State;
+}
 
 //InputPin* Switch::getInput() {
    //return nullptr;

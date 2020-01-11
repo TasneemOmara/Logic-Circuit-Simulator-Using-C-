@@ -7,6 +7,7 @@ Component::Component(GraphicsInfo* r_GfxInfo)
 	is_selected = false;
 	is_full_connect = true;
 	is_switch = false;
+	State = NotValid;
 }
 
 Component::~Component()
