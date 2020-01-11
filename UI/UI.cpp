@@ -238,6 +238,18 @@ void UI::ClearDrawingArea() const
 	pWind->DrawRectangle(0, ToolBarHeight, width, height - StatusBarHeight);
 	
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////
+void UI::ClearDrawingGate(GraphicsInfo& r_GfxInfo) const
+{
+	pWind->SetPen(WHITE, 1);
+	pWind->SetBrush(WHITE);
+	int x1 = r_GfxInfo.PointsList[0].x;
+	int y1 = r_GfxInfo.PointsList[0].y;
+	int x2 = r_GfxInfo.PointsList[1].x;
+	int y2 = r_GfxInfo.PointsList[1].y;
+	pWind->DrawRectangle(x1, y1, x2, y2);
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 //Draws the menu (toolbar) in the Design mode
 void UI::CreateDesignToolBar() 
@@ -452,8 +464,9 @@ void UI::DrawINV(const GraphicsInfo& r_GfxInfo, bool selected) const
 }
 
 
-void UI::DrawConnection(Point p1, Point p2, bool selected) const
+void UI::DrawConnection(const GraphicsInfo& r_GfxInfo, bool selected) const
 {
+
 	//TODO: Add code to draw connection
 
 	// **************************start edit 30/11 
@@ -461,12 +474,25 @@ void UI::DrawConnection(Point p1, Point p2, bool selected) const
 //	examples :     pWind->SetPen(RED, 3);
 //	               pWind->DrawLine(const int iX1, const int iY1, const int iX2, const int iY2, const drawstyle dsStyle);
 	if (selected)
-		pWind->SetPen(BLACK, 3);
+		pWind->SetPen(BLACK, 6);
 	else
-		pWind->SetPen(RED, 3);
+		pWind->SetPen(RED, 6);
+
+	Point p1 = r_GfxInfo.PointsList[0];
+	Point p2 = r_GfxInfo.PointsList[1];
 
 	pWind->DrawLine(p1.x, p1.y, p2.x, p2.y);
 	//**************************end edit
+}
+
+void UI::DeleteConnection(const GraphicsInfo& r_GfxInfo) const
+{
+	pWind->SetPen(WHITE, 6);
+
+	Point p1 = r_GfxInfo.PointsList[0];
+	Point p2 = r_GfxInfo.PointsList[1];
+
+	pWind->DrawLine(p1.x, p1.y, p2.x, p2.y);
 }
 
 void UI::PrintMsg2(string msg, int cx, int cy) const

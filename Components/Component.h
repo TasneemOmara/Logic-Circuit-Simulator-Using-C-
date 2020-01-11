@@ -3,6 +3,11 @@
 
 #include "..\Defs.h"
 #include "..\UI\UI.h"
+#include "InputPin.h"
+#include "OutputPin.h"
+#include <iostream>
+#include <String>
+using namespace std;
 
 //Base class for classes Gate, Switch, and LED.
 class Component
@@ -16,10 +21,13 @@ protected:
 
 	GraphicsInfo *m_pGfxInfo;	//The parameters required to draw a component
 	string m_Label;
+	int ID;
+	bool isConnection;
+	string CompType;
 
 public:
 	bool selected(Point k);
-	Component(GraphicsInfo *r_GfxInfo);
+	Component(GraphicsInfo *r_GfxInfo, int ID_val, string type, bool isConnection_val = false);
 
 	virtual void Operate() = 0;	//Calculates the output according to the inputs
 	virtual void Draw(UI* ) = 0;	//for each component to Draw itself
@@ -32,20 +40,36 @@ public:
 	//Destructor must be virtual
 	virtual ~Component();
 
-	virtual void SaveComponent(int ID, fstream& fileToSave) = 0; //outputs the line defining the saved component 
+	virtual void SaveComponent(fstream& fileToSave) = 0; //outputs the line defining the saved component 
 
-	//InputPin* getInput();
-	//OutputPin* getOutput();
+	virtual InputPin* getInput() = 0;
+	virtual OutputPin &getOutput() = 0;
 
-	GraphicsInfo* getGraphics();
+	virtual GraphicsInfo* getGraphics();
+	virtual void setGraphics(GraphicsInfo* Gp);
 
 	string getLabel();
 	void setLabel(string L);
 
-
+	string GetAddActionType() const;
 	void set_selected(bool val);
 	bool get_connect_state();
 	bool get_switch();
+
+	int getID();
+
+	virtual Component* getSrcCmpnt(); //used for connection only
+	virtual void setSourcePin(OutputPin* pSrcPin); //used for connection only
+	virtual void setDestPin(InputPin* pDstPin); //used for connection only
+	virtual void setSrcCmpnt(Component* SrcCmpnt_val); //used for connection only
+	virtual void setPinNumber(int n); //used for connection only
+
+	virtual void inc_last_pin_input_connected(int n = 1) = 0;
+	virtual int get_last_pin_input_connected() = 0;
+
+	virtual int get_max_Inputs() = 0;
+
+	bool is_Connection();
 };
 
 #endif

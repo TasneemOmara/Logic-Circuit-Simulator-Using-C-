@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Gate.h"
 #include "InputPin.h"
 #include "OutputPin.h"
 #include "Component.h"
@@ -7,11 +7,13 @@
 #include <fstream>
 using namespace std;
 
-class Switch :public Component
+class Switch :public Gate
 {
 protected:
 	OutputPin m_OutputPin;	//Switch has only 1 OutputPin
 	Switch_State State;
+	
+//Switch has only 1 OutputPin
 public:
 	Switch(GraphicsInfo* pGfxInfo, int r_FanOut);
 	void Operate(); //Calculates the output of the AND gate
@@ -23,10 +25,11 @@ public:
 
 	void setInputPinStatus(int n, STATUS s);//set status of Inputpin # n, to be used by connection class.
 
-	virtual void SaveComponent(int ID, fstream& fileToSave); //save function
 
 	void setSwitchState(Switch_State state);
 	Switch_State getSwitchState();
+	virtual void SaveComponent(fstream& fileToSave); //save function
+	
 
 
 

@@ -16,10 +16,20 @@
 #include "Actions\AddLabel.h"
 #include "Actions/SwitchToSim.h"
 #include "Actions/SwitchToDsn.h"
+#include "Actions\EditLabel.h"
+#include "Actions/ExitProgram.h"
+#include "Actions/AddConnection.h"
+#include "Actions\Copy.h"
+#include "Actions/Paste.h"
+#include "Actions/Delete.h"
+#include "Actions/Cut.h"
 
 ApplicationManager::ApplicationManager()
 {
+	CopiedComp = NULL;
 	CompCount = 0;
+	GatesCount = 0;
+	ConnecCount = 0;
 
 	for (int i = 0; i < MaxCompCount; i++)
 		CompList[i] = NULL;
@@ -32,6 +42,14 @@ ApplicationManager::ApplicationManager()
 void ApplicationManager::AddComponent(Component * pComp)
 {
 	CompList[CompCount++] = pComp;
+	if (pComp->is_Connection() == true)
+	{
+		ConnecCount++;
+	}
+	else if(pComp->is_Connection() == false)
+	{
+		GatesCount++;
+	}
 }
 ////////////////////////////////////////////////////////////////////
 
@@ -42,6 +60,13 @@ ActionType ApplicationManager::GetUserAction()
 }
 ////////////////////////////////////////////////////////////////////
 
+void ApplicationManager::SetCopiedComp(Component* Comp) {
+	CopiedComp = Comp;
+}
+
+Component* ApplicationManager::GetCopiedComp() const {
+	return CopiedComp;
+}
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	pUI->ClearStatusBar();
@@ -75,7 +100,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_XNOR_GATE_2:
 		pAct = new AddXNOR2(this);
 		break;
-
 	case ADD_XOR_GATE_2:
 		pAct = new AddXOR2(this);
 		break;
@@ -111,8 +135,23 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new;
 		break;*/
 ///////////////////////////////////////////////////////////////////////------------------------
+	case EDIT_Label:
+		pAct = new EditLabel(this);
+		break;
 	case EXIT:
-		///TODO: create ExitAction here
+		pAct = new ExitProgram(this);
+		break;
+	case COPY:
+		pAct = new Copy(this);
+		break;
+	case CUT:
+		pAct = new Cut(this);
+		break;
+	case PASTE:
+		pAct = new Paste(this);
+		break;
+	case DEL:
+		pAct = new Delete(this);
 		break;
 	}
 	if (pAct)
@@ -126,29 +165,33 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
-	for (int i = 0; i < CompCount; i++)
+	if (CompCount > 0)
 	{
-		CompList[i]->Draw(pUI);
-		if (CompList[i]->getLabel() != "Default")
+		for (int i = 0; i < CompCount; i++)
 		{
-			GraphicsInfo* pGraphics = CompList[i]->getGraphics();
-			int Cx1, Cy1, Cx2, Cy2;
-			Cx1 = pGraphics->PointsList[0].x;
-			Cy1 = pGraphics->PointsList[0].y;
-			Cx2 = pGraphics->PointsList[1].x;
-			Cy2 = pGraphics->PointsList[1].y;
+			CompList[i]->Draw(pUI);
+			if (CompList[i]->getLabel() != "Default")
+			{
+				GraphicsInfo* pGraphics = CompList[i]->getGraphics();
+				int Cx1, Cy1, Cx2, Cy2;
+				Cx1 = pGraphics->PointsList[0].x;
+				Cy1 = pGraphics->PointsList[0].y;
+				Cx2 = pGraphics->PointsList[1].x;
+				Cy2 = pGraphics->PointsList[1].y;
 
-			int width = pUI->getGateWidth();
-			int height = pUI->getGateHeight();
+				int width = pUI->getGateWidth();
+				int height = pUI->getGateHeight();
 
-			int label_x = Cx1 + (width);
-			int label_y = Cy1 + (height);
+				int label_x = Cx1 + (width);
+				int label_y = Cy1 + (height);
 
-			//Print the string into the desired location
-			pUI->PrintMsg2(CompList[i]->getLabel(), label_x, label_y);
+				//Print the string into the desired location
+				pUI->PrintMsg2(CompList[i]->getLabel(), label_x, label_y);
+			}
 		}
-	}
 
+	}
+	
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -172,6 +215,32 @@ Component** ApplicationManager::GetComponentList()
 }
 
 ////////////////////////////////////////////////////////////////////
+int ApplicationManager::getGatesCount() const
+{
+	return GatesCount;
+}
+int ApplicationManager::getConnectCount() const
+{
+	return ConnecCount;
+}
+
+////////////////////////////////////////////////////////////////////
+void ApplicationManager::decCompCount()
+{
+	CompCount--;
+}
+
+void ApplicationManager::decGatesCount()
+{
+	GatesCount--;
+}
+
+void ApplicationManager::decConnectCount(int n)
+{
+	ConnecCount = ConnecCount - n;
+}
+
+////////////////////////////////////////////////////////////////////
 
 ApplicationManager::~ApplicationManager()
 {
@@ -180,3 +249,5 @@ ApplicationManager::~ApplicationManager()
 	delete pUI;
 
 }
+
+

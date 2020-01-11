@@ -1,6 +1,6 @@
 #include "XOR2.h"
 
-XOR2::XOR2(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut)
+XOR2::XOR2(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut, "XOR2")
 {
 }
 
@@ -60,8 +60,8 @@ void XOR2::setInputPinStatus(int n, STATUS s)
 }
 
 
-void XOR2::SaveComponent(int ID, fstream& fileToSave)
+void XOR2::SaveComponent(fstream& fileToSave)
 {
-	fileToSave << "XOR2" << "   " << ID << "   " << m_Label << "   " << m_pGfxInfo->PointsList[0].x << "   "
+	fileToSave << "XOR2" << "   " << this->getID() << "   " << m_Label << "   " << m_pGfxInfo->PointsList[0].x << "   "
 		<< m_pGfxInfo->PointsList[0].y << "   " << m_pGfxInfo->PointsList[1].x << "   " << m_pGfxInfo->PointsList[1].y << endl;
 }

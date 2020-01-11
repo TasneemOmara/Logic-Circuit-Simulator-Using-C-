@@ -17,7 +17,10 @@ class ApplicationManager
 
 private:
 	int CompCount;		//Actual number of Components
+	Component* CopiedComp;		// Pointer to the last copied/cut component
 
+	int GatesCount;      //gates number of components
+	int ConnecCount;    //connections number of components
 
 	Component* CompList[MaxCompCount];	//List of all Components (Array of pointers)
 
@@ -40,13 +43,25 @@ public:
 	//Gets a pointer to UI Object
 	UI* GetUI();
 
-
+	void SetCopiedComp(Component* pComp);
+                                
+	Component* GetCopiedComp() const;
 
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
 
+	//getter for the component list and the count
 	int getCompCount() const;
 	Component** GetComponentList();
+
+	// getting the components and the connections number
+	int getGatesCount() const;
+	int getConnectCount() const;
+
+	//setters for the component counts
+	void decCompCount();
+	void decGatesCount();
+	void decConnectCount(int n);
 
 	//destructor
 	~ApplicationManager();

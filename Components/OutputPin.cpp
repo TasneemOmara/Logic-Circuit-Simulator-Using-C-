@@ -7,6 +7,7 @@ OutputPin::OutputPin(int r_FanOut)
 	m_FanOut = r_FanOut > MAX_CONNS ? MAX_CONNS: r_FanOut;	//set the fan out of the pin.
 }
 OutputPin::OutputPin() {}
+
 //Functionn ConnectTo:
 //Connects the ouput pin the the passed connection if the fan out permits
 //if the no. of connections is already equals to the fan out, no more connections can be created.
@@ -19,4 +20,19 @@ bool OutputPin::ConnectTo(Connection *r_Conn)
 	}
 	
 	return false;	//can't connect to any more connections
+}
+
+int OutputPin::get_m_FanOut()
+{
+	return m_FanOut;
+}
+
+int OutputPin::get_m_Conn()
+{
+	return m_Conn;
+}
+
+Connection** OutputPin::get_conn_arr()
+{
+	return m_Connections;
 }

@@ -143,6 +143,8 @@ public:
 	void ClearDrawingArea() const;	//Clears the drawing area
 	void ClearDesignToolBar() const; //Clears the Design ToolBar
 	void ClearSimulationToolBar() const; //Clears the Simulation ToolBar
+
+	void ClearDrawingGate(GraphicsInfo& r_GfxInfo) const;
 		
 	// Draws 2-input AND gate
 		// Draws 2-input AND gate
@@ -163,12 +165,14 @@ public:
 	///TODO: Make similar functions for drawing all other gates, switch, and LED, .. etc
 
 	// Draws Connection
-	void DrawConnection(Point p1, Point p2, bool selected = false) const;
+	void DrawConnection(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+	void DeleteConnection(const GraphicsInfo& r_GfxInfo) const;
 
 	void PrintMsg(string msg) const;	//Print a message on Status bar
 
 	void PrintMsg2(string msg, int cx, int cy) const;   //Print a message on a specified lacation (Label)
 
+	
 
 	////////////////////////////////////////////////////////////////////////
 	void ClearLabel(int xx, int yy) const;  //clear the label area

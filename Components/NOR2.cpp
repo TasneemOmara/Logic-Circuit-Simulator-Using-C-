@@ -1,6 +1,6 @@
 #include "NOR2.h"
 
-NOR2::NOR2(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut)
+NOR2::NOR2(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut,  "NOR2")
 {
 }
 
@@ -60,8 +60,8 @@ void NOR2::setInputPinStatus(int n, STATUS s)
 }
 
 
-void NOR2::SaveComponent(int ID, fstream& fileToSave)
+void NOR2::SaveComponent(fstream& fileToSave)
 {
-	fileToSave << "NOR2" << "   " << ID << "   " << m_Label << "   " << m_pGfxInfo->PointsList[0].x << "   "
+	fileToSave << "NOR2" << "   " << this->getID() << "   " << m_Label << "   " << m_pGfxInfo->PointsList[0].x << "   "
 		<< m_pGfxInfo->PointsList[0].y << "   " << m_pGfxInfo->PointsList[1].x << "   " << m_pGfxInfo->PointsList[1].y << endl;
 }
