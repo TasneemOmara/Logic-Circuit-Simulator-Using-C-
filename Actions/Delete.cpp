@@ -5,18 +5,27 @@
 #include "../Components/Connection.h"
 
 
-Delete::Delete(ApplicationManager* pAppMan) : Action(pAppMan) {
-
+Delete::Delete(ApplicationManager* pAppMan, int del) : Action(pAppMan) {
+	delete_number = del;
 }
 
 void Delete::Execute() {
-
 	UI* pUI = pManager->GetUI();
+
+	if (delete_number==1)
+	{
+		comp_num_todelete = 1;
+	}
+	else
+	{
+		pUI->PrintMsg("enter the component number you want to delete");
+		choice = pUI->GetSrting();
+		comp_num_todelete = stoi(choice);
+	}
+	
 	Component** CompList = pManager->GetComponentList();
 	int CompCount = pManager->getCompCount();
-	pUI->PrintMsg("enter the component number you want to delete");
-	choice = pUI->GetSrting();
-	comp_num_todelete = stoi(choice);
+
 	for (int i = 0; i < comp_num_todelete; i++) {
 		pUI->PrintMsg("Select the component you want to Delete");
 
@@ -37,13 +46,17 @@ void Delete::Execute() {
 		else
 		{
 			Component* ToDelete = CompList[selected_index];
-
+			
 			if (!CompList[selected_index]->is_Connection())
 			{
 
 				int ID = CompList[selected_index]->getID();
 				GraphicsInfo* graphics = ToDelete->getGraphics();
+				string type = ToDelete->GetAddActionType();
+				type_deleted = type;
+
 				pUI->ClearDrawingGate(*graphics);
+				CompCount = pManager->getCompCount();
 				for (size_t i = 0; i < CompCount; i++)
 				{
 					if (CompList[i]->is_Connection())
@@ -60,7 +73,7 @@ void Delete::Execute() {
 							pManager->decConnectCount(1);
 							pManager->decCompCount();
 							CompCount--;
-							continue;
+							//continue;
 						}
 						else if (in->getComponent()->getID() == ID)
 						{
@@ -76,6 +89,7 @@ void Delete::Execute() {
 				}
 				delete ToDelete;
 				CompCount--;
+				pManager->decCompCount();
 				Component** TempCompList = new Component * [CompCount];
 				CompList[selected_index] = nullptr;
 
@@ -134,6 +148,16 @@ void Delete::Undo() {
 }
 
 void Delete::Redo() {
+}
+
+void Delete::setDeleteInfo(string s)
+{
+	type_deleted = s;
+}
+
+string Delete::getDeleteInfo()
+{
+	return type_deleted;
 }
 
 Delete::~Delete()

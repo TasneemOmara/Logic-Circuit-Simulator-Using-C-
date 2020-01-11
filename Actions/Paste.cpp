@@ -27,7 +27,7 @@ void Paste::Execute() {
 
 	if (Comp == NULL)
 	{
-		pUI->PrintMsg("There is no copied component, please copy one first");
+		pUI->PrintMsg("There is no copied/cut component, please copy one first");
 	}
 	else
 	{
