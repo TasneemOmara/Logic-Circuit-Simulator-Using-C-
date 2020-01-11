@@ -10,6 +10,9 @@ void BUFF::Operate() {
 
 }	//Calculates the output of the AND gate
 
+ActionType BUFF::GetAddActionType() const {
+	return ActionType::ADD_Buff;
+}
 
 void BUFF::Draw(UI* pUI) {
 	pUI->DrawBuffer(*m_pGfxInfo, is_selected);

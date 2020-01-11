@@ -38,7 +38,7 @@ public:
 	string getLabel();
 	void setLabel(string L);
 
-
+	virtual ActionType GetAddActionType() const = 0;
 	void set_selected(bool val);
 
 };

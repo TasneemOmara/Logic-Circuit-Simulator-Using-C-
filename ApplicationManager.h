@@ -17,7 +17,7 @@ class ApplicationManager
 
 private:
 	int CompCount;		//Actual number of Components
-
+	Component* CopiedComp;		// Pointer to the last copied/cut component
 
 	Component* CompList[MaxCompCount];	//List of all Components (Array of pointers)
 
@@ -40,7 +40,9 @@ public:
 	//Gets a pointer to UI Object
 	UI* GetUI();
 
-
+	void SetCopiedComp(Component* pComp);
+                                
+Component* GetCopiedComp() const;
 
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);

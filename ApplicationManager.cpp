@@ -14,11 +14,11 @@
 #include "Actions\AddXOR2.h"
 #include "Actions\AddConnection.h"
 #include "Actions\AddLabel.h"
-
+#include "Actions\Copy.h"
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
-
+	CopiedComp = NULL;
 	for (int i = 0; i < MaxCompCount; i++)
 		CompList[i] = NULL;
 
@@ -40,6 +40,13 @@ ActionType ApplicationManager::GetUserAction()
 }
 ////////////////////////////////////////////////////////////////////
 
+void ApplicationManager::SetCopiedComp(Component* Comp) {
+	CopiedComp = Comp;
+}
+
+Component* ApplicationManager::GetCopiedComp() const {
+	return CopiedComp;
+}
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	pUI->ClearStatusBar();
@@ -95,6 +102,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case EXIT:
 		///TODO: create ExitAction here
 		break;
+		/*pAct = new Delete(this);
+		break;*/
+	case COPY:
+		pAct = new Copy(this);
+		break;
+	/*case CUT:
+		pAct = new Cut(this);
+		break;
+	case PASTE:
+		pAct = new Paste(this);
+		break;*/
 	}
 	if (pAct)
 	{
