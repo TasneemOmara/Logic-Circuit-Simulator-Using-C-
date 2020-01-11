@@ -42,6 +42,7 @@ public:
 	virtual OutputPin &getOutput() = 0;
 
 	virtual GraphicsInfo* getGraphics();
+	virtual void setGraphics(GraphicsInfo* Gp);
 
 	string getLabel();
 	void setLabel(string L);
@@ -52,8 +53,12 @@ public:
 	int getID();
 
 	virtual Component* getSrcCmpnt(); //used for connection only
+	virtual void setSourcePin(OutputPin* pSrcPin); //used for connection only
+	virtual void setDestPin(InputPin* pDstPin); //used for connection only
+	virtual void setSrcCmpnt(Component* SrcCmpnt_val); //used for connection only
+	virtual void setPinNumber(int n); //used for connection only
 
-	virtual void inc_last_pin_input_connected() = 0;
+	virtual void inc_last_pin_input_connected(int n = 1) = 0;
 	virtual int get_last_pin_input_connected() = 0;
 
 	virtual int get_max_Inputs() = 0;

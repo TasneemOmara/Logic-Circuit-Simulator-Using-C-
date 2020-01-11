@@ -35,9 +35,9 @@ int Gate::GetGatesCount() {
 	return GatesCount;
 }
 
-void Gate::inc_last_pin_input_connected()
+void Gate::inc_last_pin_input_connected(int n)
 {
-	last_pin_input_connected++;
+	last_pin_input_connected = last_pin_input_connected + n;
 }
 
 int Gate::get_last_pin_input_connected()

@@ -1,3 +1,8 @@
-0
+4
+XNOR2   0   Default   170   206   220   256
+NOR2   1   Default   529   222   579   272
+NAND2   2   Default   184   375   234   425
+XOR2   3   Default   531   387   581   437
 Connections
-0
+1
+2   1   1

@@ -27,9 +27,10 @@ public:
 	void Draw(UI* );	//for each component to Draw itself
 
 	
-	void setSourcePin(OutputPin *pSrcPin);
-	void setDestPin(InputPin *pDstPin);
-	void setSrcCmpnt(Component* SrcCmpnt_val);
+	virtual void setSourcePin(OutputPin *pSrcPin);
+	virtual void setDestPin(InputPin *pDstPin);
+	virtual void setSrcCmpnt(Component* SrcCmpnt_val);
+	
 	OutputPin* getSourcePin();
 	InputPin* getDestPin();
 	virtual Component* getSrcCmpnt();
@@ -46,8 +47,10 @@ public:
 
 	int getConnCount(); //used to set the ID and count the number of created objects
 
+	virtual void setPinNumber(int n); 
+
 	//virtual functions that has only meaning in gates, so it's an empty here because it's pure virtual function in Component
-	virtual void inc_last_pin_input_connected();
+	virtual void inc_last_pin_input_connected(int n = 1);
 	virtual int get_last_pin_input_connected();
 	virtual int get_max_Inputs();
 };

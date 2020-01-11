@@ -439,9 +439,9 @@ void UI::DrawConnection(const GraphicsInfo& r_GfxInfo, bool selected) const
 //	examples :     pWind->SetPen(RED, 3);
 //	               pWind->DrawLine(const int iX1, const int iY1, const int iX2, const int iY2, const drawstyle dsStyle);
 	if (selected)
-		pWind->SetPen(BLACK, 3);
+		pWind->SetPen(BLACK, 6);
 	else
-		pWind->SetPen(RED, 3);
+		pWind->SetPen(RED, 6);
 
 	Point p1 = r_GfxInfo.PointsList[0];
 	Point p2 = r_GfxInfo.PointsList[1];
@@ -452,7 +452,7 @@ void UI::DrawConnection(const GraphicsInfo& r_GfxInfo, bool selected) const
 
 void UI::DeleteConnection(const GraphicsInfo& r_GfxInfo) const
 {
-	pWind->SetPen(WHITE, 3);
+	pWind->SetPen(WHITE, 6);
 
 	Point p1 = r_GfxInfo.PointsList[0];
 	Point p2 = r_GfxInfo.PointsList[1];
