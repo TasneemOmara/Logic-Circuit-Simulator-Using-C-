@@ -13,6 +13,7 @@ protected:
 	bool is_full_connect;
 	bool is_switch;
 	Switch_State State;
+
 	GraphicsInfo *m_pGfxInfo;	//The parameters required to draw a component
 	string m_Label;
 
