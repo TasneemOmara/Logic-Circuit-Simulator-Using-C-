@@ -95,3 +95,4 @@ int Connection::get_max_Inputs()
 {
 	return -1;  //because it has no meaning
 }
+

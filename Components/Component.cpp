@@ -71,3 +71,8 @@ int Component::getID()
 bool Component::is_Connection() {
 	return isConnection;
 }
+
+Component* Component::getSrcCmpnt()
+{
+	return nullptr; //has no meaning except for connection
+}

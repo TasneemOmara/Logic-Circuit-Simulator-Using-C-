@@ -19,6 +19,7 @@
 #include "Actions/AddConnection.h"
 #include "Actions\Copy.h"
 #include "Actions/Paste.h"
+#include "Actions/Delete.h"
 
 
 ApplicationManager::ApplicationManager()
@@ -121,8 +122,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case EXIT:
 		pAct = new ExitProgram(this);
 		break;
-		/*pAct = new Delete(this);
-		break;*/
 	case COPY:
 		pAct = new Copy(this);
 		break;
@@ -131,6 +130,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;*/
 	case PASTE:
 		pAct = new Paste(this);
+		break;
+	case DEL:
+		pAct = new Delete(this);
 		break;
 	}
 	if (pAct)
@@ -144,29 +146,33 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
-	for (int i = 0; i < CompCount; i++)
+	if (CompCount > 0)
 	{
-		CompList[i]->Draw(pUI);
-		if (CompList[i]->getLabel() != "Default")
+		for (int i = 0; i < CompCount; i++)
 		{
-			GraphicsInfo* pGraphics = CompList[i]->getGraphics();
-			int Cx1, Cy1, Cx2, Cy2;
-			Cx1 = pGraphics->PointsList[0].x;
-			Cy1 = pGraphics->PointsList[0].y;
-			Cx2 = pGraphics->PointsList[1].x;
-			Cy2 = pGraphics->PointsList[1].y;
+			CompList[i]->Draw(pUI);
+			if (CompList[i]->getLabel() != "Default")
+			{
+				GraphicsInfo* pGraphics = CompList[i]->getGraphics();
+				int Cx1, Cy1, Cx2, Cy2;
+				Cx1 = pGraphics->PointsList[0].x;
+				Cy1 = pGraphics->PointsList[0].y;
+				Cx2 = pGraphics->PointsList[1].x;
+				Cy2 = pGraphics->PointsList[1].y;
 
-			int width = pUI->getGateWidth();
-			int height = pUI->getGateHeight();
+				int width = pUI->getGateWidth();
+				int height = pUI->getGateHeight();
 
-			int label_x = Cx1 + (width);
-			int label_y = Cy1 + (height);
+				int label_x = Cx1 + (width);
+				int label_y = Cy1 + (height);
 
-			//Print the string into the desired location
-			pUI->PrintMsg2(CompList[i]->getLabel(), label_x, label_y);
+				//Print the string into the desired location
+				pUI->PrintMsg2(CompList[i]->getLabel(), label_x, label_y);
+			}
 		}
-	}
 
+	}
+	
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -197,6 +203,22 @@ int ApplicationManager::getGatesCount() const
 int ApplicationManager::getConnectCount() const
 {
 	return ConnecCount;
+}
+
+////////////////////////////////////////////////////////////////////
+void ApplicationManager::decCompCount()
+{
+	CompCount--;
+}
+
+void ApplicationManager::decGatesCount()
+{
+	GatesCount--;
+}
+
+void ApplicationManager::decConnectCount(int n)
+{
+	ConnecCount = ConnecCount - n;
 }
 
 ////////////////////////////////////////////////////////////////////
