@@ -5,8 +5,10 @@
 class Delete :public Action
 {
 private:
-
-
+	int Cx, Cy;
+	string choice; //the key entered to take num of comps
+	int comp_num_todelete; //number of components to delete in case multiple delete 
+	
 public:
 
 	Delete(ApplicationManager* App);

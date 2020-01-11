@@ -17,7 +17,6 @@ class ApplicationManager
 
 private:
 	int CompCount;		//Actual number of Components
-
 	Component* CopiedComp;		// Pointer to the last copied/cut component
 
 	int GatesCount;      //gates number of components
