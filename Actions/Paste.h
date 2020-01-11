@@ -4,8 +4,7 @@
 class Paste :public Action {
 private:
 	Component* Comp;		// Pointer to the pasted component
-	Action* Act;			// Add component action
-
+	
 public:
 	Paste(ApplicationManager* pAppMan);
  void Execute();
