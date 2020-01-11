@@ -41,7 +41,7 @@ public:
 	virtual InputPin* getInput() = 0;
 	virtual OutputPin &getOutput() = 0;
 
-	GraphicsInfo* getGraphics();
+	virtual GraphicsInfo* getGraphics();
 
 	string getLabel();
 	void setLabel(string L);
@@ -50,6 +50,8 @@ public:
 	void set_selected(bool val);
 
 	int getID();
+
+	virtual Component* getSrcCmpnt(); //used for connection only
 
 	virtual void inc_last_pin_input_connected() = 0;
 	virtual int get_last_pin_input_connected() = 0;

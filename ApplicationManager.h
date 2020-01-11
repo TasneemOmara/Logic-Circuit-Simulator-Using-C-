@@ -46,7 +46,7 @@ public:
 
 	void SetCopiedComp(Component* pComp);
                                 
-Component* GetCopiedComp() const;
+	Component* GetCopiedComp() const;
 
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);
@@ -58,6 +58,11 @@ Component* GetCopiedComp() const;
 	// getting the components and the connections number
 	int getGatesCount() const;
 	int getConnectCount() const;
+
+	//setters for the component counts
+	void decCompCount();
+	void decGatesCount();
+	void decConnectCount(int n);
 
 	//destructor
 	~ApplicationManager();

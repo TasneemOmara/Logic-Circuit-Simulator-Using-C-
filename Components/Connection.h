@@ -32,7 +32,7 @@ public:
 	void setSrcCmpnt(Component* SrcCmpnt_val);
 	OutputPin* getSourcePin();
 	InputPin* getDestPin();
-	Component* getSrcCmpnt();
+	virtual Component* getSrcCmpnt();
 
 
 	int GetOutPinStatus();	//returns status of outputpin if LED, return -1
