@@ -38,7 +38,7 @@ public:
 
 	static int GetGatesCount();
 
-	virtual void inc_last_pin_input_connected();
+	virtual void inc_last_pin_input_connected(int n = 1);
 	virtual int get_last_pin_input_connected();
 
 	int get_max_Inputs();   //to get the maximum number of input pins

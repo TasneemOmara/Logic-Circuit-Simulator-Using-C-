@@ -70,6 +70,8 @@ OutputPin& Connection::getOutput()
 void Connection::setSrcCmpnt(Component* SrcCmpnt_val)
 {
 	SrcCmpnt = SrcCmpnt_val;
+	SrcPin = &(SrcCmpnt->getOutput());
+	SrcPin->ConnectTo(this);
 }
 
 Component* Connection::getSrcCmpnt()
@@ -81,9 +83,11 @@ int Connection::getConnCount() {
 	return ConnectionCount;
 }
 
-
+void Connection::setPinNumber(int n) {
+	pin_number = n;
+}
 //virtual functions that has only meaning in gates, so it's an empty here because it's pure virtual function in Component
-void Connection::inc_last_pin_input_connected()
+void Connection::inc_last_pin_input_connected(int n)
 {
 
 }

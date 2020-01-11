@@ -25,6 +25,11 @@ GraphicsInfo* Component::getGraphics()
 	return m_pGfxInfo;
 }
 
+void Component::setGraphics(GraphicsInfo* Gp)
+{
+	m_pGfxInfo = Gp;
+}
+
 string Component::getLabel() {
 	return m_Label;
 }
@@ -52,15 +57,31 @@ bool Component::selected(Point k) {
 	int x_max = m_pGfxInfo->PointsList[1].x;
 	int y_min = m_pGfxInfo->PointsList[0].y;
 	int y_max = m_pGfxInfo->PointsList[1].y;
-	if (k.x > x_min && k.x < x_max && k.y > y_min && k.y < y_max) {
-		is_selected = true;
-		return true;
+	if (this->isConnection == false)
+	{
+		if (k.x > x_min&& k.x < x_max && k.y > y_min&& k.y < y_max) {
+			is_selected = true;
+			return true;
+		}
+		else
+		{
+			is_selected = false;
+			return false;
+		}
 	}
 	else
 	{
-		is_selected = false;
-		return false;
+		if (k.x > x_min&& k.x < x_max || k.y > y_min&& k.y < y_max) {
+			is_selected = true;
+			return true;
+		}
+		else
+		{
+			is_selected = false;
+			return false;
+		}
 	}
+	
 }
 
 int Component::getID()
@@ -75,4 +96,21 @@ bool Component::is_Connection() {
 Component* Component::getSrcCmpnt()
 {
 	return nullptr; //has no meaning except for connection
+}
+
+void Component::setSourcePin(OutputPin* pSrcPin)
+{
+
+}
+void Component::setDestPin(InputPin* pDstPin)
+{
+
+}
+void Component::setSrcCmpnt(Component* SrcCmpnt_val)
+{
+
+}
+void Component::setPinNumber(int n)
+{
+
 }
