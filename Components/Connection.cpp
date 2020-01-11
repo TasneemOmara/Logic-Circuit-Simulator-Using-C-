@@ -1,7 +1,7 @@
 #include "Connection.h"
 int Connection::ConnectionCount = 0;
 
-Connection::Connection(GraphicsInfo* r_pGfxInfo, InputPin *pDstPin, Component* SrcCmpnt_val, int pin_number_val): Component(r_pGfxInfo, (Connection::getConnCount()), true)
+Connection::Connection(GraphicsInfo* r_pGfxInfo, InputPin *pDstPin, Component* SrcCmpnt_val, int pin_number_val): Component(r_pGfxInfo, (Connection::getConnCount()), "Connection" , true)
 {
 	DstPin = pDstPin;
 	SrcCmpnt = SrcCmpnt_val;

@@ -2,7 +2,7 @@
 
 
 //r_FanOut: Fan out of the Switch's output pin
-Switch::Switch(GraphicsInfo* pGfxInfo, int r_FanOut) :Gate(pGfxInfo, 0 , r_FanOut)
+Switch::Switch(GraphicsInfo* pGfxInfo, int r_FanOut) :Gate(pGfxInfo, 0 , r_FanOut, "Switch")
 {
 
 }

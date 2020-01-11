@@ -5,7 +5,9 @@
 #include "..\UI\UI.h"
 #include "InputPin.h"
 #include "OutputPin.h"
-
+#include <iostream>
+#include <String>
+using namespace std;
 
 //Base class for classes Gate, Switch, and LED.
 class Component
@@ -17,10 +19,11 @@ protected:
 	string m_Label;
 	int ID;
 	bool isConnection;
+	string CompType;
 
 public:
 	bool selected(Point k);
-	Component(GraphicsInfo *r_GfxInfo, int ID_val, bool isConnection_val = false);
+	Component(GraphicsInfo *r_GfxInfo, int ID_val, string type, bool isConnection_val = false);
 
 	virtual void Operate() = 0;	//Calculates the output according to the inputs
 	virtual void Draw(UI* ) = 0;	//for each component to Draw itself
@@ -43,7 +46,7 @@ public:
 	string getLabel();
 	void setLabel(string L);
 
-	virtual ActionType GetAddActionType() const = 0;
+	string GetAddActionType() const;
 	void set_selected(bool val);
 
 	int getID();

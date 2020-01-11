@@ -7,7 +7,7 @@
 
 int Gate::GatesCount = 0;
 
-Gate::Gate(GraphicsInfo* pGfxInfo, int r_Inputs, int r_FanOut) :Component(pGfxInfo, (Gate::GetGatesCount())), m_OutputPin(r_FanOut)
+Gate::Gate(GraphicsInfo* pGfxInfo, int r_Inputs, int r_FanOut, string type) :Component(pGfxInfo, (Gate::GetGatesCount()), type), m_OutputPin(r_FanOut)
 {
 	//Allocate number of input pins (equals r_Inputs)
 	m_InputPins = new InputPin[r_Inputs];

@@ -1,6 +1,6 @@
 #include "INV2.h"
 
-INV2::INV2(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut)
+INV2::INV2(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut, "INV2")
 {
 }
 

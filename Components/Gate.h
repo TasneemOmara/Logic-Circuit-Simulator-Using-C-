@@ -30,7 +30,7 @@ protected:
 	int last_pin_input_connected; //variable to store the last input pin connected, initially it will be zero
 
 public:
-	Gate(GraphicsInfo* pGfxInfo, int r_Inputs, int r_FanOut);
+	Gate(GraphicsInfo* pGfxInfo, int r_Inputs, int r_FanOut, string type);
 
 	
 	virtual InputPin* getInput();

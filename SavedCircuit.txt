@@ -1,10 +1,6 @@
-4
-NAND2   0   Default   205   203   255   253
-LED   1   Default   550   224   600   274
-LED   2   Default   270   388   320   438
-XNOR2   3   Default   403   119   453   169
-Connections
 3
-0   1   1
-0   2   1
-3   0   1
+NOR2   0   Default   257   219   307   269
+NAND2   1   Default   422   237   472   287
+NOR2   2   Default   752   218   802   268
+Connections
+0

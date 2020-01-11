@@ -4,9 +4,12 @@
 #include "Select.h"
 
 Copy::Copy(ApplicationManager* pAppMan) : Action(pAppMan) {
+
 }
 void Copy::Execute() {
+
 	UI* pUI = pManager->GetUI();
+
 	pUI->PrintMsg("select the component you want to copy");
 	int Cx, Cy;
 	pUI->GetPointClicked(Cx, Cy);
@@ -14,10 +17,16 @@ void Copy::Execute() {
 	SelectedP.x = Cx;
 	SelectedP.y = Cy;
 	pUI->setlast_point_clicked(SelectedP);
+
 	Select* pAct = new Select(pManager);
 	pAct->Execute();
-	 int selected_index1 = pAct->getIndex();
-	 pManager->SetCopiedComp(Comp);
+
+	int selected_index1 = pAct->getIndex();
+	Component** CompList = pManager->GetComponentList();
+	Component* Comp = CompList[selected_index1];
+
+	pManager->SetCopiedComp(Comp);
+
 	}
   void Copy::Redo() {
 

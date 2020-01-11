@@ -2,7 +2,7 @@
 
 
 //r_FanOut: Fan out of the Switch's output pin
-LED::LED(GraphicsInfo* pGfxInfo) :Gate(pGfxInfo, 1, 0)
+LED::LED(GraphicsInfo* pGfxInfo) :Gate(pGfxInfo, 1, 0, "LED")
 {
 	InputPin* m_InputputPin = new InputPin;
 	m_InputputPin->setComponent(this);

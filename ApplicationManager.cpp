@@ -18,6 +18,7 @@
 #include "Actions/ExitProgram.h"
 #include "Actions/AddConnection.h"
 #include "Actions\Copy.h"
+#include "Actions/Paste.h"
 
 
 ApplicationManager::ApplicationManager()
@@ -127,10 +128,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	/*case CUT:
 		pAct = new Cut(this);
-		break;
+		break;*/
 	case PASTE:
 		pAct = new Paste(this);
-		break;*/
+		break;
 	}
 	if (pAct)
 	{

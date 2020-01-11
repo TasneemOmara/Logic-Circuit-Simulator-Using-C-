@@ -5,6 +5,7 @@
 
 
 Cut::Cut(ApplicationManager* pAppMan) : Action(pAppMan) {
+
 }
 
 void Cut::Execute() {

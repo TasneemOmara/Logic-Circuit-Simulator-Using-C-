@@ -1,6 +1,6 @@
 #include "BUFF.h"
 
-BUFF::BUFF(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut) {
+BUFF::BUFF(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut, "BUFF" ) {
 
 }
 
@@ -10,9 +10,6 @@ void BUFF::Operate() {
 
 }	//Calculates the output of the AND gate
 
-ActionType BUFF::GetAddActionType() const {
-	return ActionType::ADD_Buff;
-}
 
 void BUFF::Draw(UI* pUI) {
 	pUI->DrawBuffer(*m_pGfxInfo, is_selected);

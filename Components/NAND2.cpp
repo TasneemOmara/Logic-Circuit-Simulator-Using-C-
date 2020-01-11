@@ -1,6 +1,6 @@
 #include "NAND2.h"
 
-NAND2::NAND2(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut)
+NAND2::NAND2(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut, "NAND2" )
 {
 }
 

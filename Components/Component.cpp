@@ -1,17 +1,24 @@
 #include "Component.h"
 
 
-Component::Component(GraphicsInfo* r_GfxInfo, int ID_val, bool isConnection_val)
+Component::Component(GraphicsInfo* r_GfxInfo, int ID_val, string type , bool isConnection_val)
 {
 	m_pGfxInfo = r_GfxInfo;
 	m_Label = "Default";
 	is_selected = false;
 	ID = ID_val;
 	isConnection = isConnection_val;
+	CompType = type;
 }
 
 Component::~Component()
 {}
+
+
+string Component::GetAddActionType() const
+{
+	return CompType;
+}
 
 GraphicsInfo* Component::getGraphics()
 {
