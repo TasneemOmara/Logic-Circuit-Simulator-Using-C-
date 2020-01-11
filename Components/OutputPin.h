@@ -23,6 +23,9 @@ public:
 	OutputPin();
 	OutputPin(int r_FanOut);	
 	bool ConnectTo(Connection *r_Conn);	//connect to a new connection
+	int get_m_FanOut();
+	int get_m_Conn();
+	
 };
 
 #endif

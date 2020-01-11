@@ -19,6 +19,7 @@ void AddLabel::Execute() {
 
     UI* pUI = pManager->GetUI();
     pUI->PrintMsg(" Click to select the gate where you want add your label");
+    
     int Cx, Cy;
     pUI->GetPointClicked(Cx, Cy);
     Point SelectedP;
@@ -33,13 +34,14 @@ void AddLabel::Execute() {
     //Clear Status Bar
     pUI->ClearStatusBar();
 
-    //Request the required label from the user 
-    pUI->PrintMsg("Please Enter the label you want here");
-    string Label = pUI->GetSrting();
+
 
 
     if (x != -1)
     {
+        //Request the required label from the user 
+        pUI->PrintMsg("Please Enter the label you want here");
+        string Label = pUI->GetSrting();
         CompList[x]->setLabel(Label);
 
     }

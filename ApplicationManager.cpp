@@ -16,10 +16,13 @@
 #include "Actions\AddLabel.h"
 #include "Actions\EditLabel.h"
 #include "Actions/ExitProgram.h"
+#include "Actions/AddConnection.h"
 
 ApplicationManager::ApplicationManager()
 {
 	CompCount = 0;
+	GatesCount = 0;
+	ConnecCount = 0;
 
 	for (int i = 0; i < MaxCompCount; i++)
 		CompList[i] = NULL;
@@ -32,6 +35,14 @@ ApplicationManager::ApplicationManager()
 void ApplicationManager::AddComponent(Component * pComp)
 {
 	CompList[CompCount++] = pComp;
+	if (pComp->is_Connection() == true)
+	{
+		ConnecCount++;
+	}
+	else if(pComp->is_Connection() == false)
+	{
+		GatesCount++;
+	}
 }
 ////////////////////////////////////////////////////////////////////
 
@@ -157,6 +168,16 @@ Component** ApplicationManager::GetComponentList()
 }
 
 ////////////////////////////////////////////////////////////////////
+int ApplicationManager::getGatesCount() const
+{
+	return GatesCount;
+}
+int ApplicationManager::getConnectCount() const
+{
+	return ConnecCount;
+}
+
+////////////////////////////////////////////////////////////////////
 
 ApplicationManager::~ApplicationManager()
 {
@@ -165,3 +186,5 @@ ApplicationManager::~ApplicationManager()
 	delete pUI;
 
 }
+
+

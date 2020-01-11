@@ -41,8 +41,8 @@ void OR2::setInputPinStatus(int n, STATUS s)
 }
 
 
-void OR2::SaveComponent(int ID, fstream& fileToSave)
+void OR2::SaveComponent(fstream& fileToSave)
 {
-	fileToSave << "OR2" << "   " << ID << "   " << m_Label << "   " << m_pGfxInfo->PointsList[0].x << "   "
+	fileToSave << "OR2" << "   " << this->getID() << "   " << m_Label << "   " << m_pGfxInfo->PointsList[0].x << "   "
 		<< m_pGfxInfo->PointsList[0].y << "   " << m_pGfxInfo->PointsList[1].x << "   " << m_pGfxInfo->PointsList[1].y << endl;
 }

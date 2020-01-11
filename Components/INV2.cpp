@@ -41,8 +41,8 @@ void INV2::setInputPinStatus(int n, STATUS s)
 }
 
 
-void INV2::SaveComponent(int ID, fstream& fileToSave)
+void INV2::SaveComponent(fstream& fileToSave)
 {
-	fileToSave << "INV2" << "   " << ID << "   " << m_Label << "   " << m_pGfxInfo->PointsList[0].x << "   "
+	fileToSave << "INV2" << "   " << this->getID() << "   " << m_Label << "   " << m_pGfxInfo->PointsList[0].x << "   "
 		<< m_pGfxInfo->PointsList[0].y << "   " << m_pGfxInfo->PointsList[1].x << "   " << m_pGfxInfo->PointsList[1].y << endl;
 }

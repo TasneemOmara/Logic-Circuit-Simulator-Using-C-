@@ -29,9 +29,13 @@ void ExitProgram::Execute() {
             pS->Execute();
             valid = true;
         }
-        else if (save != "N" || save != "n")
+        else if (save != "N" && save != "n")
         {
             pUI->PrintMsg("Invalid input, Do you want to save? y/n ");
+        }
+        else
+        {
+            valid = true;
         }
     }
     delete pS;

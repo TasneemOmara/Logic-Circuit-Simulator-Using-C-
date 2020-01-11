@@ -15,14 +15,33 @@ void Save::Execute()
 	UI* pUI = pManager->GetUI();
 	pUI->PrintMsg("Saving new file, it's name is SavedCircuit.txt");
 	int CompCount = pManager->getCompCount();
+	int GatesCount = pManager->getGatesCount();
+	int ConnectCount = pManager->getConnectCount();
+
 	Component** CompList = pManager->GetComponentList();
 
 	if (fileToSave.is_open())
 	{
-		fileToSave << CompCount << endl;
+		fileToSave << GatesCount << endl;
 		for (size_t i = 0; i < CompCount; i++)
 		{
-			CompList[i]->SaveComponent(i, fileToSave);
+			if (!(CompList[i]->is_Connection()))
+			{
+				CompList[i]->SaveComponent(fileToSave);
+			}
+			
+		}
+
+		fileToSave << "Connections" << endl;
+		fileToSave << ConnectCount << endl;
+		
+		for (size_t i = 0; i < CompCount; i++)
+		{
+			if ((CompList[i]->is_Connection()))
+			{
+				CompList[i]->SaveComponent(fileToSave);
+			}
+
 		}
 	}
 	else
