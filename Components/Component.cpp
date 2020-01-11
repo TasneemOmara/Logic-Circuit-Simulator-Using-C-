@@ -1,10 +1,13 @@
 #include "Component.h"
 
-Component::Component(GraphicsInfo* r_GfxInfo)
+
+Component::Component(GraphicsInfo* r_GfxInfo, int ID_val, bool isConnection_val)
 {
 	m_pGfxInfo = r_GfxInfo;
 	m_Label = "Default";
 	is_selected = false;
+	ID = ID_val;
+	isConnection = isConnection_val;
 }
 
 Component::~Component()
@@ -51,4 +54,13 @@ bool Component::selected(Point k) {
 		is_selected = false;
 		return false;
 	}
+}
+
+int Component::getID()
+{
+	return ID;
+}
+
+bool Component::is_Connection() {
+	return isConnection;
 }

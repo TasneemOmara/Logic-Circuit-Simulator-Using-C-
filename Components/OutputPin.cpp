@@ -20,3 +20,13 @@ bool OutputPin::ConnectTo(Connection *r_Conn)
 	
 	return false;	//can't connect to any more connections
 }
+
+int OutputPin::get_m_FanOut()
+{
+	return m_FanOut;
+}
+
+int OutputPin::get_m_Conn()
+{
+	return m_Conn;
+}

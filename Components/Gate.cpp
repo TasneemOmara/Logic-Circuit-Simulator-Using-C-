@@ -4,7 +4,10 @@
 //Parameters:
 //r_Inputs: no. of gate's input pins
 //r_FanOut: Fan out of the gate's output pin
-Gate::Gate(GraphicsInfo* pGfxInfo, int r_Inputs, int r_FanOut) :Component(pGfxInfo), m_OutputPin(r_FanOut)
+
+int Gate::GatesCount = 0;
+
+Gate::Gate(GraphicsInfo* pGfxInfo, int r_Inputs, int r_FanOut) :Component(pGfxInfo, (Gate::GetGatesCount())), m_OutputPin(r_FanOut)
 {
 	//Allocate number of input pins (equals r_Inputs)
 	m_InputPins = new InputPin[r_Inputs];
@@ -13,20 +16,36 @@ Gate::Gate(GraphicsInfo* pGfxInfo, int r_Inputs, int r_FanOut) :Component(pGfxIn
 	//Associate all input pins to this gate
 	for (int i = 0; i < m_Inputs; i++)
 		m_InputPins[i].setComponent(this);
+	
+	GatesCount += 1;
+	last_pin_input_connected = 0;
 }
 
 
-void Gate::SaveComponent(int ID, fstream& fileToSave)
+
+InputPin* Gate::getInput() {
+	return m_InputPins;
+}
+
+OutputPin& Gate::getOutput() {
+	return m_OutputPin;
+}
+
+int Gate::GetGatesCount() {
+	return GatesCount;
+}
+
+void Gate::inc_last_pin_input_connected()
 {
-
+	last_pin_input_connected++;
 }
 
-//	InputPin* Gate::getInput()
-	//{
-//		return m_InputPins[0];
-	//}
+int Gate::get_last_pin_input_connected()
+{
+	return last_pin_input_connected;
+}
 
-	//OutputPin* Gate::getoutput()
-	//{
-		//return m_OutputPin;
-	//}
+int Gate::get_max_Inputs()
+{
+	return m_Inputs;
+}

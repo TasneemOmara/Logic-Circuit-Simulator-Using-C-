@@ -14,11 +14,19 @@
 #include "Actions\AddXOR2.h"
 #include "Actions\AddConnection.h"
 #include "Actions\AddLabel.h"
+#include "Actions\EditLabel.h"
+#include "Actions/ExitProgram.h"
+#include "Actions/AddConnection.h"
 #include "Actions\Copy.h"
+
+
 ApplicationManager::ApplicationManager()
 {
-	CompCount = 0;
 	CopiedComp = NULL;
+	CompCount = 0;
+	GatesCount = 0;
+	ConnecCount = 0;
+
 	for (int i = 0; i < MaxCompCount; i++)
 		CompList[i] = NULL;
 
@@ -30,6 +38,14 @@ ApplicationManager::ApplicationManager()
 void ApplicationManager::AddComponent(Component * pComp)
 {
 	CompList[CompCount++] = pComp;
+	if (pComp->is_Connection() == true)
+	{
+		ConnecCount++;
+	}
+	else if(pComp->is_Connection() == false)
+	{
+		GatesCount++;
+	}
 }
 ////////////////////////////////////////////////////////////////////
 
@@ -80,7 +96,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_XNOR_GATE_2:
 		pAct = new AddXNOR2(this);
 		break;
-
 	case ADD_XOR_GATE_2:
 		pAct = new AddXOR2(this);
 		break;
@@ -99,8 +114,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case LOAD:
 		pAct = new Load(this);
 		break;
+	case EDIT_Label:
+		pAct = new EditLabel(this);
+		break;
 	case EXIT:
-		///TODO: create ExitAction here
+		pAct = new ExitProgram(this);
 		break;
 		/*pAct = new Delete(this);
 		break;*/
@@ -171,6 +189,16 @@ Component** ApplicationManager::GetComponentList()
 }
 
 ////////////////////////////////////////////////////////////////////
+int ApplicationManager::getGatesCount() const
+{
+	return GatesCount;
+}
+int ApplicationManager::getConnectCount() const
+{
+	return ConnecCount;
+}
+
+////////////////////////////////////////////////////////////////////
 
 ApplicationManager::~ApplicationManager()
 {
@@ -179,3 +207,5 @@ ApplicationManager::~ApplicationManager()
 	delete pUI;
 
 }
+
+

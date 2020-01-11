@@ -2,7 +2,7 @@
 
 
 //r_FanOut: Fan out of the Switch's output pin
-Switch::Switch(GraphicsInfo* pGfxInfo, int r_FanOut) :Component(pGfxInfo), m_OutputPin(r_FanOut)
+Switch::Switch(GraphicsInfo* pGfxInfo, int r_FanOut) :Gate(pGfxInfo, 0 , r_FanOut)
 {
 
 }
@@ -37,9 +37,9 @@ void Switch::setInputPinStatus(int n, STATUS s)
 }
 
 
-void Switch::SaveComponent(int ID, fstream& fileToSave)
+void Switch::SaveComponent(fstream& fileToSave)
 {
-	fileToSave << "Switch" << "   " << ID << "   " << m_Label << "   " << m_pGfxInfo->PointsList[0].x << "   "
+	fileToSave << "Switch" << "   " << this->getID() << "   " << m_Label << "   " << m_pGfxInfo->PointsList[0].x << "   "
 		<< m_pGfxInfo->PointsList[0].y << "   " << m_pGfxInfo->PointsList[1].x << "   " << m_pGfxInfo->PointsList[1].y << endl;
 }
 

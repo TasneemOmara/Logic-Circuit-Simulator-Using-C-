@@ -24,17 +24,24 @@ protected:
 	//
 	InputPin* m_InputPins;	//Array of input pins of the Gate
 	OutputPin m_OutputPin;	//The Gate output pin
+
 	int m_Inputs;		//No. of input pins of that Gate.
+	static int GatesCount;
+	int last_pin_input_connected; //variable to store the last input pin connected, initially it will be zero
+
 public:
 	Gate(GraphicsInfo* pGfxInfo, int r_Inputs, int r_FanOut);
 
-	//inhertied Save/Load functions 
-	virtual void SaveComponent(int ID, fstream& fileToSave);
 	
+	virtual InputPin* getInput();
+	virtual OutputPin& getOutput();
 
+	static int GetGatesCount();
 
-	//virtual InputPin* getInput();
-	//virtual OutputPin* getOutput();*/
+	virtual void inc_last_pin_input_connected();
+	virtual int get_last_pin_input_connected();
+
+	int get_max_Inputs();   //to get the maximum number of input pins
 
 };
 

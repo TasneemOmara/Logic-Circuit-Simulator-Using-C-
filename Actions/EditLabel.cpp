@@ -1,25 +1,23 @@
-#include"AddLabel.h"
+#include"EditLabel.h"
 #include "..\ApplicationManager.h"
 #include "Select.h"
 
 
 
 
-AddLabel::AddLabel(ApplicationManager* pApp) :Action(pApp) {
+EditLabel::EditLabel(ApplicationManager* pApp) :Action(pApp) {
 }
-AddLabel::~AddLabel(void) {
+EditLabel::~EditLabel(void) {
 }
 
 
 
-void AddLabel::Execute() {
+void EditLabel::Execute() {
     int count = pManager->getCompCount();
     Component** CompList = pManager->GetComponentList();
-    //bool selected;
 
     UI* pUI = pManager->GetUI();
-    pUI->PrintMsg(" Click to select the gate where you want add your label");
-    
+    pUI->PrintMsg(" Click to select the gate that you want to edit its label");
     int Cx, Cy;
     pUI->GetPointClicked(Cx, Cy);
     Point SelectedP;
@@ -40,7 +38,7 @@ void AddLabel::Execute() {
     if (x != -1)
     {
         //Request the required label from the user 
-        pUI->PrintMsg("Please Enter the label you want here");
+        pUI->PrintMsg(CompList[x]->getLabel());
         string Label = pUI->GetSrting();
         CompList[x]->setLabel(Label);
 
@@ -49,11 +47,11 @@ void AddLabel::Execute() {
 }
 
 
-void AddLabel::Undo()
+void EditLabel::Undo()
 {
 
 }
-void AddLabel::Redo()
+void EditLabel::Redo()
 {
 
 }

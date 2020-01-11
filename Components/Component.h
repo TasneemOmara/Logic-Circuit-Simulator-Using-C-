@@ -3,6 +3,9 @@
 
 #include "..\Defs.h"
 #include "..\UI\UI.h"
+#include "InputPin.h"
+#include "OutputPin.h"
+
 
 //Base class for classes Gate, Switch, and LED.
 class Component
@@ -12,10 +15,12 @@ protected:
 	bool is_selected;
 	GraphicsInfo *m_pGfxInfo;	//The parameters required to draw a component
 	string m_Label;
+	int ID;
+	bool isConnection;
 
 public:
 	bool selected(Point k);
-	Component(GraphicsInfo *r_GfxInfo);
+	Component(GraphicsInfo *r_GfxInfo, int ID_val, bool isConnection_val = false);
 
 	virtual void Operate() = 0;	//Calculates the output according to the inputs
 	virtual void Draw(UI* ) = 0;	//for each component to Draw itself
@@ -28,10 +33,10 @@ public:
 	//Destructor must be virtual
 	virtual ~Component();
 
-	virtual void SaveComponent(int ID, fstream& fileToSave) = 0; //outputs the line defining the saved component 
+	virtual void SaveComponent(fstream& fileToSave) = 0; //outputs the line defining the saved component 
 
-	//InputPin* getInput();
-	//OutputPin* getOutput();
+	virtual InputPin* getInput() = 0;
+	virtual OutputPin &getOutput() = 0;
 
 	GraphicsInfo* getGraphics();
 
@@ -41,6 +46,14 @@ public:
 	virtual ActionType GetAddActionType() const = 0;
 	void set_selected(bool val);
 
+	int getID();
+
+	virtual void inc_last_pin_input_connected() = 0;
+	virtual int get_last_pin_input_connected() = 0;
+
+	virtual int get_max_Inputs() = 0;
+
+	bool is_Connection();
 };
 
 #endif
