@@ -97,7 +97,7 @@ ActionType UI::GetUserAction()
 		//[1] If user clicks on the Toolbar
 		if ( y >= 0 && y < ToolBarHeight)
 		{	
-			//Check whick Menu item was clicked
+			//Check which Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
 			int ClickedItemOrder = (x / ToolItemWidth);
 			//Divide x coord of the point clicked by the menu item width (int division)
@@ -147,7 +147,22 @@ ActionType UI::GetUserAction()
 	}
 	else	//Application is in Simulation mode
 	{
-		return SIM_MODE;	//This should be changed after creating the compelete simulation bar 
+		//return SIM_MODE;	//This should be changed after creating the compelete simulation bar 
+		
+		//[1] User clicks on the simulation toolbar
+		if (y >= 0 && y < 80)
+		{
+			//Check whick Menu item was clicked
+			//==> This assumes that menu items are lined up horizontally <==
+			int ClickedItemOrder = (x / 80);
+			//Divide x coord of the point clicked by the menu item width (int division)
+			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+			switch (ClickedItemOrder)
+			{
+			case 0: return SIMULATE;
+			case 1: return DSN_MODE;
+			}
+		}
 	}
 
 }
@@ -193,6 +208,26 @@ void UI::ClearStatusBar()const
 	pWind->SetPen(BkGrndColor);
 	pWind->SetBrush(BkGrndColor);
 	pWind->DrawRectangle(MsgX, height - MsgY, width, height);
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+void UI::ClearDesignToolBar ()const
+{
+
+
+	//Overwrite using bachground color to erase the message
+	pWind->SetPen(BkGrndColor);
+	pWind->SetBrush(BkGrndColor);
+	pWind->DrawRectangle(0, 0, width, ToolBarHeight);
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+void UI::ClearSimulationToolBar ()const
+{
+	//Overwrite using bachground color to erase the message
+	pWind->SetPen(BkGrndColor);
+	pWind->SetBrush(BkGrndColor);
+	pWind->DrawRectangle(0, 0, width, 80);
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 //Clears the drawing (degin) area

@@ -8,6 +8,24 @@ XNOR2::XNOR2(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanO
 void XNOR2::Operate()
 {
 	//caclulate the output status as the XNORing of the two input pins
+	STATUS n0, n1;
+	n0 = m_InputPins[0].getStatus();
+	n1 = m_InputPins[1].getStatus();
+
+	if ((n0 == 0 && n1 == 0) || (n0 == 1 && n1 == 1))
+	{
+		m_OutputPin.setStatus(HIGH);
+		is_full_connect = true;
+	}
+	else if (n0 == 2 || n1 == 2)
+	{
+		m_OutputPin.setStatus(NCON);
+		is_full_connect = false;
+	}
+	else {
+		m_OutputPin.setStatus(LOW);
+		is_full_connect = true;
+	}
 
 	//Add you code here
 }

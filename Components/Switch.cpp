@@ -4,7 +4,7 @@
 //r_FanOut: Fan out of the Switch's output pin
 Switch::Switch(GraphicsInfo* pGfxInfo, int r_FanOut) :Component(pGfxInfo), m_OutputPin(r_FanOut)
 {
-
+	is_switch = true;
 }
 
 
@@ -15,8 +15,9 @@ void Switch::Draw(UI* pUI)
 }
 
 void Switch::Operate() {
+	//Calculates the output according to the inputs
 
-}	//Calculates the output according to the inputs
+}	
 
 
 //returns status of outputpin

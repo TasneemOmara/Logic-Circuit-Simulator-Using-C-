@@ -14,6 +14,8 @@
 #include "Actions\AddXOR2.h"
 #include "Actions\AddConnection.h"
 #include "Actions\AddLabel.h"
+#include "Actions/SwitchToSim.h"
+#include "Actions/SwitchToDsn.h"
 
 ApplicationManager::ApplicationManager()
 {
@@ -92,6 +94,23 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case LOAD:
 		pAct = new Load(this);
 		break;
+
+	case SIM_MODE:   // Switch To Simulation Mode
+		pAct = new SwitchToSim(this);
+		break;
+
+	case DSN_MODE:
+		pAct = new SwitchToDsn(this);
+		break;
+/////////////////////////////////////////////////////////////////////----------------------
+/*	case SIMULATE:
+		pAct = new;
+		break;
+
+	case Change_Switch:
+		pAct = new;
+		break;*/
+///////////////////////////////////////////////////////////////////////------------------------
 	case EXIT:
 		///TODO: create ExitAction here
 		break;

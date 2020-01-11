@@ -10,6 +10,8 @@ class Component
 	
 protected:
 	bool is_selected;
+	bool is_full_connect;
+	bool is_switch;
 	GraphicsInfo *m_pGfxInfo;	//The parameters required to draw a component
 	string m_Label;
 
@@ -40,7 +42,8 @@ public:
 
 
 	void set_selected(bool val);
-
+	bool get_connect_state();
+	bool get_switch();
 };
 
 #endif

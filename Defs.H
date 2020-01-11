@@ -47,6 +47,9 @@ enum ActionType
 	CUT,        // CUT a Component, a Connection
 
 	// Edit ended here*************************
+	////////////////////////////////////////////////////////////////
+	SIMULATE,   // Simulate the circuit
+	
 
 };
 

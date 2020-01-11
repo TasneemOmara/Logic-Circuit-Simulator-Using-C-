@@ -1,10 +1,12 @@
-#include "Component.h"
+#include"../Components/Component.h"
 
 Component::Component(GraphicsInfo* r_GfxInfo)
 {
 	m_pGfxInfo = r_GfxInfo;
 	m_Label = "Default";
 	is_selected = false;
+	is_full_connect = true;
+	is_switch = false;
 }
 
 Component::~Component()
@@ -51,4 +53,13 @@ bool Component::selected(Point k) {
 		is_selected = false;
 		return false;
 	}
+}
+
+bool Component::get_connect_state() {
+	return is_full_connect;
+}
+
+bool Component::get_switch()
+{
+	return is_switch;
 }

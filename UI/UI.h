@@ -141,7 +141,8 @@ public:
 
 	void ClearStatusBar() const;		//Clears the status bar
 	void ClearDrawingArea() const;	//Clears the drawing area
-
+	void ClearDesignToolBar() const; //Clears the Design ToolBar
+	void ClearSimulationToolBar() const; //Clears the Simulation ToolBar
 		
 	// Draws 2-input AND gate
 		// Draws 2-input AND gate

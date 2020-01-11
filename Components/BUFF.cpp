@@ -1,14 +1,33 @@
 #include "BUFF.h"
 
-BUFF::BUFF(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut) {
+BUFF::BUFF(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 1, r_FanOut) {
 
 }
 
 
 
 void BUFF::Operate() {
+	//Calculates the output of the BUFFER gate
+	STATUS n0;
+	n0 = m_InputPins[0].getStatus();
 
-}	//Calculates the output of the AND gate
+	if (n0 == 0)
+	{
+		m_OutputPin.setStatus(LOW);
+		is_full_connect = true;
+	}
+	else if (n0 == 1)
+	{
+		m_OutputPin.setStatus(HIGH);
+		is_full_connect = true;
+
+	}
+	else {
+		is_full_connect = false;
+	}
+	
+
+}	
 
 
 void BUFF::Draw(UI* pUI) {

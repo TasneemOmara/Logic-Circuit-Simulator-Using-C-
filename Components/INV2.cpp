@@ -1,6 +1,6 @@
 #include "INV2.h"
 
-INV2::INV2(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut)
+INV2::INV2(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 1, r_FanOut)
 {
 }
 
@@ -8,6 +8,22 @@ INV2::INV2(GraphicsInfo* r_pGfxInfo, int r_FanOut) :Gate(r_pGfxInfo, 2, r_FanOut
 void INV2::Operate()
 {
 	//caclulate the output status as the INVerting of the two input pins
+	STATUS n0, n1;
+	n0 = m_InputPins[0].getStatus();
+    
+	if ( n0 == 1)
+	{
+		m_OutputPin.setStatus(LOW);
+		is_full_connect = true;
+	}
+	else if (n0 == 0)
+	{
+		m_OutputPin.setStatus(HIGH);
+		is_full_connect = true;
+	}
+	else {
+		is_full_connect = false;
+	}
 
 	//Add you code here
 }

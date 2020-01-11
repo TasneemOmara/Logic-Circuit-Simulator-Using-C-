@@ -23,6 +23,14 @@ void Connection::Operate()
 {
 	//Status of connection destination pin = status of connection source pin
 	DstPin->setStatus((STATUS)SrcPin->getStatus());
+	if (DstPin->getStatus() == NCON)
+	{
+		is_full_connect = false;
+	}
+	else {
+		is_full_connect = true;
+	}
+	
 }
 
 void Connection::Draw(UI* pUI)
