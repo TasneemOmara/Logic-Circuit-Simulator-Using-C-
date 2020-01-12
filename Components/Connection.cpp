@@ -28,14 +28,17 @@ InputPin* Connection::getDestPin()
 void Connection::Operate()
 {
 	//Status of connection destination pin = status of connection source pin
-	DstPin->setStatus((STATUS)SrcPin->getStatus());
-	if (DstPin->getStatus() == NCON)
+	//DstPin->setStatus((STATUS)SrcPin->getStatus());
+	
+	STATUS state = SrcPin->getStatus();
+	DstPin->setStatus(state);
+	/*if (DstPin->getStatus() == NCON)
 	{
 		is_full_connect = false;
 	}
 	else {
 		is_full_connect = true;
-	}
+	}*/
 	
 }
 

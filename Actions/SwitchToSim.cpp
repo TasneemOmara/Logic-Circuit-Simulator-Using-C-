@@ -19,22 +19,25 @@ void SwitchToSim::Execute()
 	Component** CompList = pManager->GetComponentList();
 	UI* pUI = pManager->GetUI();
 
-	for (int i = 0; i < CompCount; i++)
+	for (size_t i = 0; i < CompCount; i++)
 	{
-		CompList[i]->Operate();
-
-		if (CompList[i]->get_connect_state() == false)
+		if (!CompList[i]->is_Connection())
 		{
-			pUI->PrintMsg("One or more of the pins is not connected, please, recheck the pins and try again");
-			flag_c = 1; // raise a flag that there are unconnected pins
-			break;
+			int pin_num = CompList[i]->get_last_pin_input_connected();
+			if (pin_num != CompList[i]->get_max_Inputs())
+			{
+				pUI->PrintMsg("One or more of the pins is not connected, please, recheck the pins and try again");
+				flag_c = 1; // raise a flag that there are unconnected pins
+				break;
+			}
 		}
 
-		// CompList[i]-> get_connect_state()  ; // a getter to check the connection of each component
 	}
+
+
 	if (flag_c == 0)
 	{
-		pManager->ExecuteAction(SAVE);
+		//pManager->ExecuteAction(SAVE);
 		pUI->ClearSimulationToolBar();
 		pUI->ClearStatusBar();
 		//pUI->ClearDrawingArea();

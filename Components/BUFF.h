@@ -9,8 +9,7 @@
 class BUFF :public Gate
 {
 protected:
-	InputPin m_InputputPin;	//BUFF has only 1 inputputPin
-	OutputPin m_OutputPin;	//BUFF has only 1 OutputPin
+
 public:
 	//BUFF(GraphicsInfo* pGfxInfo);
 	BUFF(GraphicsInfo* pGfxInfo, int r_FanOut);

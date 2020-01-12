@@ -3,7 +3,6 @@
 #include "..\UI\UI.h"
 #include "Select.h"
 #include"Delete.h"
-
 #include "../Components/AND2.h"
 #include "../Components/BUFF.h"
 #include "../Components/INV2.h"

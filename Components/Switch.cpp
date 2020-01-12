@@ -7,6 +7,7 @@ Switch::Switch(GraphicsInfo* pGfxInfo, int r_FanOut) :Gate(pGfxInfo, 0 , r_FanOu
 {
 	is_switch = true;
 	State = OFF;
+	m_OutputPin.setStatus(HIGH);
 }
 
 
@@ -25,13 +26,16 @@ void Switch::Draw(UI* pUI)
 
 void Switch::Operate() {
 	//Calculates the output according to the inputs
+	
 	if (State == ON)
 	{
 		m_OutputPin.setStatus(HIGH);
+		this->setLabel("ON");
 	}
 	else
 	{
 		m_OutputPin.setStatus(LOW);
+		this->setLabel("OFF");
 	}
 }	
 

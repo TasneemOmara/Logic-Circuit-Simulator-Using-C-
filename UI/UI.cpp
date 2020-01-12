@@ -432,11 +432,13 @@ void UI::DrawSwitch(const GraphicsInfo& r_GfxInfo, bool selected, Switch_State S
 	}
 	if (State == ON)
 	{
-		    GateImage = "Images\\Gates\\Switch_ON.jpg";
+		    //GateImage = "Images\\Gates\\Switch_ON.jpg";
+			GateImage = "Images\\Gates\\Switch.jpg";
 	}
 	else if (State == OFF)
 	{
-		    GateImage = "Images\\Gates\\Switch_OFF.jpg";
+		GateImage = "Images\\Gates\\Switch_Hi.jpg";
+		// GateImage = "Images\\Gates\\Switch_OFF.jpg";
 	}
 	//Draw Switch at Gfx_Info (1st corner)
 	//Set the Image Width & Height by Switch Image Parameter in UI_Info

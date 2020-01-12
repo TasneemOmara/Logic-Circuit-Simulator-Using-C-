@@ -24,7 +24,7 @@ Gate::Gate(GraphicsInfo* pGfxInfo, int r_Inputs, int r_FanOut, string type) :Com
 
 
 InputPin* Gate::getInput() {
-	return m_InputPins;
+	return &m_InputPins[m_Inputs];
 }
 
 OutputPin& Gate::getOutput() {

@@ -10,7 +10,6 @@ using namespace std;
 class Switch :public Gate
 {
 protected:
-	OutputPin m_OutputPin;	//Switch has only 1 OutputPin
 	Switch_State State;
 	
 //Switch has only 1 OutputPin

@@ -22,7 +22,7 @@ void SwitchToDsn::Execute()
 	pUI->ClearStatusBar();
 	pUI->ClearDrawingArea();
 	pUI->CreateDesignToolBar();
-	pManager->ExecuteAction(LOAD);
+	//pManager->ExecuteAction(LOAD);
 
 	
 }

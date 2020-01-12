@@ -23,6 +23,7 @@
 #include "Actions/Paste.h"
 #include "Actions/Delete.h"
 #include "Actions/Cut.h"
+#include "Actions/Simulate.h"
 
 ApplicationManager::ApplicationManager()
 {
@@ -152,6 +153,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case DEL:
 		pAct = new Delete(this);
+		break;
+	case SIMULATE:
+		pAct = new Simulate(this);
 		break;
 	}
 	if (pAct)

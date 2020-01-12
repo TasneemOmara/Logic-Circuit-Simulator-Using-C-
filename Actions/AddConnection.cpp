@@ -41,7 +41,7 @@ void AddConnection::Execute() {
         selected_index1 = pAct->getIndex();
 
         //keep asking the user to select if he clicked on the empty space 
-        while (selected_index1 == -1)
+        if (selected_index1 == -1)
         {
             pUI->PrintMsg("Please select again the first component");
             pAct->Execute();
@@ -60,7 +60,7 @@ void AddConnection::Execute() {
         selected_index2 = pAct->getIndex();
 
         //keep asking the user to select if he clicked on the empty space 
-        while (selected_index2 == -1)
+        if (selected_index2 == -1)
         {
             pUI->PrintMsg("Please select again the second component");
             pAct->Execute();
@@ -118,9 +118,10 @@ void AddConnection::Execute() {
 
                     //create the connection with the first point corresponding to the first component and the second point corresponding to the 
                     //second one 
+                    
                     Connection* pC = new Connection(pGInfo, inpin, Comp1, pin_num);
-
-
+                    pC->setSrcCmpnt(Comp1);
+                   
                     //Clear Status Bar
                     pUI->ClearStatusBar();
 
@@ -152,7 +153,7 @@ void AddConnection::Execute() {
         pAct->Execute();
         int indx = pAct->getIndex();
 
-        while (indx == -1)
+        if (indx == -1)
         {
             pUI->PrintMsg("Please select again the connection you want to edit");
             pAct->Execute();
@@ -176,7 +177,7 @@ void AddConnection::Execute() {
 
         int indx_src = pAct->getIndex();
 
-        while (indx_src == -1)
+        if (indx_src == -1)
         {
             pUI->PrintMsg("Please select again the source component");
             pAct->Execute();
@@ -196,7 +197,7 @@ void AddConnection::Execute() {
         pAct->Execute();
 
         int indx_dst = pAct->getIndex();
-        while (indx_dst == -1)
+        if (indx_dst == -1)
         {
             pUI->PrintMsg("Please select again the destination component");
             pAct->Execute();
